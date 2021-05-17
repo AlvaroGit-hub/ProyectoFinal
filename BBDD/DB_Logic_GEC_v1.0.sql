@@ -57,3 +57,17 @@ begin
 		END IF;
 END;
 
+
+-- crear un trigger para que cuando metamos el fichaje de salida nos calcule el tiempo total.
+
+
+create TRIGGER descanso_horas_totales_ai 
+after INSERT ON descanso
+FOR EACH ROW
+begin
+	select total_horas into @h from fichaje where new.id_fichaje = (select id_fichaje from fichaje where new.id_fichaje=id_fichaje);
+	IF @h < '07:00:00'
+		THEN
+			SET new.h_entrada = time(current_timestamp());
+		END IF;
+END;
