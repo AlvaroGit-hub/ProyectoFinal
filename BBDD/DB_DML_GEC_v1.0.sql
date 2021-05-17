@@ -33,20 +33,22 @@ create table fichaje(
 	f_entrada datetime default current_timestamp(),
 	f_salida datetime,
 	total_horas time,
+	total_descanso time,
 	dentro boolean default true,
 	foreign key (id_empleado) references empleado(id_empleado)
 );
 
 create table descanso(
-	id_fichaje int(10) primary key,
-	h_entrada time,
-	h_salida time,
+	id_descanso int(10) primary key,
+	h_entrada datetime default current_timestamp(),
+	h_salida datetime,
+	total_horas time,
 	dentro boolean DEFAULT TRUE,
-	foreign key (id_fichaje) references fichaje(id_fichaje)
+	foreign key (id_descanso) references fichaje(id_fichaje)
 );
 
 create table pieza(
-	id_pieza varchar(20) primary key,
+	id_pieza int(4) primary key auto_increment,
 	nombre varchar(100) not null,
 	stock int(20) default 0,
 	precio dec(6,2) not null,
@@ -54,8 +56,8 @@ create table pieza(
 );
 
 create table tarea( 
-	id_tarea int(4) primary key,
-	id_pieza varchar(20) not null,
+	id_tarea int(4) primary key auto_increment,
+	id_pieza int(4) not null,
 	cantidad_realizada int(6) default 0,
 	cantidad_prevista int(6) not null,
 	finalizado boolean default false,
@@ -63,11 +65,12 @@ create table tarea(
 );
 
 create table realizar(
-	id_tarea int(4) not null primary key,
+	id_tarea int(4) not null,
 	id_empleado int(4) not null,
-	f_inicio datetime,
+	f_inicio datetime default current_timestamp(),
 	f_final datetime,
 	cantidad_realizada int(6),
+	primary key(id_tarea,id_empleado,f_inicio),
 	foreign key (id_tarea) references tarea(id_tarea),
 	foreign key (id_empleado) references empleado(id_empleado),
 	check (cantidad_realizada > 0)
@@ -95,3 +98,19 @@ select * from fichaje;
 select * from descanso;
 
 delete from fichaje;
+
+
+call nueva_pieza('tuerca',2.1,'tuerca de 1 cm de largo'); 
+
+select * from pieza;
+
+call nueva_tarea(1, 1000); 
+
+select * from tarea;
+
+call iniciar_tarea(1, 1);
+
+select * from realizar;
+
+call fin_tarea(1, 500);
+
