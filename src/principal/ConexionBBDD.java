@@ -1,6 +1,7 @@
 package principal;
 
 import java.sql.*;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class ConexionBBDD {
@@ -22,7 +23,9 @@ public class ConexionBBDD {
     	try {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa", "jorge","");	
+
+            this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa", "root","");	
+
             
         }catch(SQLException e) {
         	e.printStackTrace();
@@ -32,6 +35,44 @@ public class ConexionBBDD {
     	
     	return con;
 
+    }
+    
+
+    public int login(String nombre, String contrasena) {
+    	
+    	int respuesta=0;
+    	try {
+			cls = conectar().prepareCall("{?=call login_usuario(?,?)}");
+			cls.setString(2, nombre);
+			cls.setString(3, contrasena);
+			cls.registerOutParameter(1, java.sql.Types.INTEGER);
+			cls.executeUpdate();
+			respuesta=cls.getInt(1);
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(!conectar().isClosed()) {
+					conectar().close();
+				}
+				if(!cls.isClosed()) {
+					cls.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+    	
+    	return respuesta;
+    }
+    
+    public Statement getStatement() throws SQLException {
+    	
+			smt = conectar().createStatement();
+	
+    	return smt;
     }
     
     public String[][] consultar(String consulta) {
@@ -127,15 +168,26 @@ public class ConexionBBDD {
 		}
 	}
 
-	public void nuevoUsuario(String nombre,String apellidos,String contrasena,String categoria) {
+	public int nuevoUsuario(String nombre,String apellidos,String contrasena,String categoria) {
+		int respuesta=0;
 		try {
 			cls = conectar().prepareCall("{call nuevo_empleado(?,?,?,?)}");
-			cls.setString(1, nombre);
-			cls.setString(2, apellidos);
-			cls.setString(3, contrasena);
-			cls.setString(4, categoria);
-			cls.executeUpdate();
-		} catch (Exception e) {
+			if (nombre.isEmpty() || apellidos.isEmpty() || contrasena.isEmpty()) {
+				respuesta=0;
+			}else {
+				
+				cls.setString(1, nombre);
+				cls.setString(2, apellidos);
+				cls.setString(3, contrasena);
+				cls.setString(4, categoria);
+				cls.executeUpdate();
+				respuesta=1;
+			}
+
+			
+		} catch (SQLException e) {
+			System.out.println("Error en los datos introducidos");
+		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
@@ -150,6 +202,7 @@ public class ConexionBBDD {
 				e.printStackTrace();
 			}
 		}
+		return respuesta;
 	}
 	
 	public void nuevoTarea(int idPieza, int cantidadDeseada) {
