@@ -44,10 +44,10 @@ public class Login extends JFrame {
 		lblUsuario.setBounds(37, 92, 97, 42);
 		ventanaLogin.add(lblUsuario);
 		
-		JLabel lblContraseña = new JLabel("Contrase\u00F1a");
-		lblContraseña.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblContraseña.setBounds(37, 145, 97, 42);
-		ventanaLogin.add(lblContraseña);
+		JLabel lblContrasena = new JLabel("Contrase\u00F1a");
+		lblContrasena.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblContrasena.setBounds(37, 145, 97, 42);
+		ventanaLogin.add(lblContrasena);
 		
 		textUsuario = new JTextField();
 		textUsuario.setBounds(158, 106, 232, 20);
