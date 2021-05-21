@@ -13,7 +13,7 @@ public class Registro extends JFrame {
 	private JPanel ventanaNuevoUser;
 	private JTextField txtNombre;
 	private JTextField txtApellidos;
-	private JPasswordField contraseña;
+	private JPasswordField contrasena;
 	private ConexionBBDD conexion;
 
 	public Registro() {
@@ -45,10 +45,10 @@ public class Registro extends JFrame {
 		lblApellidos.setBounds(72, 132, 91, 30);
 		ventanaNuevoUser.add(lblApellidos);
 		
-		JLabel lblContraseña = new JLabel("Contrase\u00F1a");
-		lblContraseña.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblContraseña.setBounds(72, 164, 104, 28);
-		ventanaNuevoUser.add(lblContraseña);
+		JLabel lblContrasena = new JLabel("Contrase\u00F1a");
+		lblContrasena.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblContrasena.setBounds(72, 164, 104, 28);
+		ventanaNuevoUser.add(lblContrasena);
 		
 		JLabel lblCategoria = new JLabel("Categoria");
 		lblCategoria.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -70,9 +70,9 @@ public class Registro extends JFrame {
 		txtApellidos.setBounds(210, 140, 264, 20);
 		ventanaNuevoUser.add(txtApellidos);
 		
-		contraseña = new JPasswordField();
-		contraseña.setBounds(210, 171, 264, 20);
-		ventanaNuevoUser.add(contraseña);
+		contrasena = new JPasswordField();
+		contrasena.setBounds(210, 171, 264, 20);
+		ventanaNuevoUser.add(contrasena);
 		
 		JComboBox cBCategoria = new JComboBox();
 		cBCategoria.setModel(new DefaultComboBoxModel(new String[] {"Jefe", "Encargado", "Trabajador"}));
@@ -85,7 +85,7 @@ public class Registro extends JFrame {
 		btnRegistro.addActionListener(new ActionListener() {
 				
 				public void actionPerformed(ActionEvent evt2) {
-					int respuesta = conexion.nuevoUsuario(txtNombre.getText(),txtApellidos.getText(),contraseña.getText(),String.valueOf(cBCategoria.getSelectedItem()));
+					int respuesta = conexion.nuevoUsuario(txtNombre.getText(),txtApellidos.getText(),contrasena.getText(),String.valueOf(cBCategoria.getSelectedItem()));
 					
 					if (respuesta==1) {
 						dispose();
