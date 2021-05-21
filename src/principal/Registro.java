@@ -67,7 +67,7 @@ public class Registro extends JFrame {
 		contentPane.add(lblCategoria);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(Registro.class.getResource("/interfaz/gemlogotransdefinitivo1.png")));
+		lblLogo.setIcon(new ImageIcon(Registro.class.getResource("/principal/gemlogotransdefinitivo1.png")));
 		lblLogo.setBounds(164, 11, 237, 59);
 		contentPane.add(lblLogo);
 			
@@ -103,7 +103,7 @@ public class Registro extends JFrame {
 					String Categoria = txtCategoria.getText();
 					
 					
-					String bd="swing_pruebas";
+					String bd="empresa";
 					String url ="jdbc:mysql://localhost:3306/" + bd;
 					
 					String usuario = "root";
@@ -164,7 +164,7 @@ public class Registro extends JFrame {
 			public void actionPerformed(ActionEvent evt3) {
 				
 				dispose();
-				Interfaz i = new Interfaz();	
+				Login i = new Login();	
 			}
 		});
 		
