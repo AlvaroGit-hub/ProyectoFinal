@@ -22,7 +22,9 @@ public class ConexionBBDD {
     	try {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
+
             this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa", "root","");	
+
             
         }catch(SQLException e) {
         	e.printStackTrace();
@@ -34,6 +36,7 @@ public class ConexionBBDD {
 
     }
     
+
     public int login(String nombre, String contrasena) {
     	System.out.println("login");
     	int respuesta=0;
@@ -65,6 +68,7 @@ public class ConexionBBDD {
     }
     
     
+
     public String[][] consultar(String consulta) {
 		
 		String nombreColumnas[]=null;
