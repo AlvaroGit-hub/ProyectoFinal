@@ -12,14 +12,14 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextField;
 
-public class Registros extends JFrame{
+public class Tablas extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private Interfaz i;
+	private Login i;
 	
-	public Registros() {
-		i= new Interfaz();
+	public Tablas() {
+		i= new Login();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 646, 417);
@@ -30,7 +30,7 @@ public class Registros extends JFrame{
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Registros.class.getResource("/interfaz/gemlogotransdefinitivopeque\u00F1o.png")));
+		lblNewLabel.setIcon(new ImageIcon(Tablas.class.getResource("/interfaz/gemlogotransdefinitivopeque\u00F1o.png")));
 		lblNewLabel.setBounds(545, 11, 75, 42);
 		contentPane.add(lblNewLabel);
 		
@@ -50,7 +50,7 @@ public class Registros extends JFrame{
 	
 	public void nombreuser(String u) {	
 		
-			Interfaz i = new Interfaz();
+			Login i = new Login();
 			i.pasardatos(textField.getText());
 			dispose();
 			

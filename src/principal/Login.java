@@ -25,20 +25,20 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Toolkit;
 
-public class Interfaz extends JFrame {
+public class Login extends JFrame {
 	
 	private JPanel miPanel;
 	private JTextField textUsuario;
 	private JPasswordField passwordField;
 
-	public Interfaz() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Interfaz.class.getResource("/interfaz/gemlogotransdefinitivo1.png")));
+	public Login() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/principal/gemlogotransdefinitivo1.png")));
 		setTitle("Gesti\u00F3n Empresarial");
 		
 		
 		//this.setSize(800,600);
 		this.setResizable(false);
-
+		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -73,7 +73,7 @@ public class Interfaz extends JFrame {
 					String userName = textUsuario.getText();
 					String passWord = passwordField.getText();
 					
-					String bd="swing_pruebas";
+					String bd="empresa";
 					String url ="jdbc:mysql://localhost:3306/" + bd;
 					
 					String usuario = "root";
@@ -148,7 +148,7 @@ public class Interfaz extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(Interfaz.class.getResource("/interfaz/gemlogotransdefinitivo1.png")));
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/principal/gemlogotransdefinitivo1.png")));
 		lblNewLabel.setBounds(114, 11, 208, 66);
 		miPanel.add(lblNewLabel);
 		
@@ -184,7 +184,7 @@ public class Interfaz extends JFrame {
 		String userName = textUsuario.getText();
 		String passWord = passwordField.getText();
 		
-		String bd="swing_pruebas";
+		String bd="empresa";
 		String url ="jdbc:mysql://localhost:3306/" + bd;
 		
 		String usuario = "root";
@@ -227,7 +227,7 @@ public class Interfaz extends JFrame {
 		                		 + "Has ingresado correctamente al sistema",   "Mensaje de bienvenida",
 		                		 JOptionPane.INFORMATION_MESSAGE);
 		                 
-		                 Registros re=new Registros();
+		                 Tablas re=new Tablas();
 		                 userName=user;
 		                 
 					}else {

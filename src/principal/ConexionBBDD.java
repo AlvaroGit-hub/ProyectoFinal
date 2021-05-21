@@ -22,7 +22,9 @@ public class ConexionBBDD {
     	try {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa", "jorge","");	
+
+            this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa", "root","");	
+
             
         }catch(SQLException e) {
         	e.printStackTrace();
@@ -34,6 +36,39 @@ public class ConexionBBDD {
 
     }
     
+
+    public int login(String nombre, String contrasena) {
+    	System.out.println("login");
+    	int respuesta=0;
+    	try {
+			cls = conectar().prepareCall("{?=call login_usuario(?,?)}");
+			cls.setString(2, nombre);
+			cls.setString(3, contrasena);
+			cls.registerOutParameter(1, java.sql.Types.INTEGER);
+			cls.executeUpdate();
+			respuesta=cls.getInt(1);
+			System.out.println(respuesta);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(!conectar().isClosed()) {
+					conectar().close();
+				}
+				if(!cls.isClosed()) {
+					cls.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+    	
+    	return respuesta;
+    }
+    
+    
+
     public String[][] consultar(String consulta) {
 		
 		String nombreColumnas[]=null;
