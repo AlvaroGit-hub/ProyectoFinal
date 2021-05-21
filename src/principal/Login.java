@@ -227,7 +227,7 @@ public class Login extends JFrame {
 		                		 + "Has ingresado correctamente al sistema",   "Mensaje de bienvenida",
 		                		 JOptionPane.INFORMATION_MESSAGE);
 		                 
-		                 Tablas re=new Tablas();
+		                 Menu re=new Menu();
 		                 userName=user;
 		                 
 					}else {
@@ -249,8 +249,5 @@ public class Login extends JFrame {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	}
-	public void pasardatos(String user) {
-		
 	}
 }
