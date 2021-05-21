@@ -1,32 +1,12 @@
 package principal;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 import javax.swing.border.EmptyBorder;
+import java.awt.event.*;
+import java.sql.*;
+import javax.swing.*;
+import java.awt.*;
 
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.Dimension;
-
-import javax.swing.SwingConstants;
-import java.awt.Toolkit;
-import java.awt.Rectangle;
 
 public class Login extends JFrame {
 	
@@ -64,10 +44,10 @@ public class Login extends JFrame {
 		lblUsuario.setBounds(37, 92, 97, 42);
 		ventanaLogin.add(lblUsuario);
 		
-		JLabel lblContraseña = new JLabel("Contrase\u00F1a");
-		lblContraseña.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblContraseña.setBounds(37, 145, 97, 42);
-		ventanaLogin.add(lblContraseña);
+		JLabel lblContraseÃ±a = new JLabel("Contrase\u00F1a");
+		lblContraseÃ±a.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblContraseÃ±a.setBounds(37, 145, 97, 42);
+		ventanaLogin.add(lblContraseÃ±a);
 		
 		textUsuario = new JTextField();
 		textUsuario.setBounds(158, 106, 232, 20);
@@ -138,7 +118,7 @@ public class Login extends JFrame {
 		
 		/*
 		 * el metodo login se usa para llamar a un metodo de la clase conexion que a su vez ejecuta un procedimiento sql
-		 * que lo que hace es comprobar que el usuario y la contraseña existen en la base de datos y que son correctos
+		 * que lo que hace es comprobar que el usuario y la contraseÃ±a existen en la base de datos y que son correctos
 		 * y nos devuelve 1 o 0 en funcion de si los datos son correctos o no. Luego llama a el metodo empleado para
 		 * obtener los datos de usuario y nos abre la pantalla de la aplicacion.
 		 */
@@ -153,7 +133,7 @@ public class Login extends JFrame {
 			System.out.println("conectado");
 		}else {
 			JOptionPane.showMessageDialog(null, "\n"
-					+ "Usuario o contraseña incorrectas", "Acceso denegado",
+					+ "Usuario o contraseÃ±a incorrectas", "Acceso denegado",
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
@@ -164,7 +144,7 @@ public class Login extends JFrame {
 	public Empleado empleado(String nombre, String contrasena) {
 		
 		/*
-		 * Este metodo necesita que se le pasen por parametros un usuario u su contraseña, de esta forma
+		 * Este metodo necesita que se le pasen por parametros un usuario u su contraseÃ±a, de esta forma
 		 * obtiene de la base de datos todos los datos de el usuario para poder usarlos mas adelante
 		 */
 		

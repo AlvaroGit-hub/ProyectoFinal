@@ -19,6 +19,9 @@ public class ConexionBBDD {
     }
     	
     public Connection conectar() {
+    	/*
+    	 * clase para realizar las conexiones a la base de datos
+    	 */
     	
     	try {
             

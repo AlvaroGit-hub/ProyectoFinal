@@ -1,17 +1,10 @@
 package principal;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Font;
-import javax.swing.JTextField;
-import java.awt.Toolkit;
+
+
 
 public class Tablas extends JFrame{
 
