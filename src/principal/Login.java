@@ -1,171 +1,105 @@
 package principal;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 import javax.swing.border.EmptyBorder;
+import java.awt.event.*;
+import java.sql.*;
+import javax.swing.*;
+import java.awt.*;
 
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.Color;
-import javax.swing.SwingConstants;
-import java.awt.Toolkit;
 
 public class Login extends JFrame {
 	
-	private JPanel miPanel;
+	private JPanel ventanaLogin;
 	private JTextField textUsuario;
 	private JPasswordField passwordField;
-
+	private ConexionBBDD conexion;
+	private Empleado emp;
+	
 	public Login() {
+		
+		conexion= new ConexionBBDD();
+		
+		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/principal/gemlogotransdefinitivo1.png")));
 		setTitle("Gesti\u00F3n Empresarial");
-		
-		
-		//this.setSize(800,600);
-		this.setResizable(false);
-		
-		
+		setSize(pantalla.width/2,pantalla.height/2);
+	    		
+	    
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		miPanel = new JPanel();
-		miPanel.setBackground(Color.GRAY);
-		miPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(miPanel);
-		miPanel.setLayout(null);
+		ventanaLogin = new JPanel();
+		
+		
+		setResizable(false);
+		ventanaLogin.setBackground(Color.GRAY);
+		ventanaLogin.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		setContentPane(ventanaLogin);
+		ventanaLogin.setLayout(null);
 		
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblUsuario.setBounds(37, 92, 97, 42);
-		miPanel.add(lblUsuario);
+		ventanaLogin.add(lblUsuario);
 		
-		JLabel lblContraseña = new JLabel("Contrase\u00F1a");
-		lblContraseña.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblContraseña.setBounds(37, 145, 97, 42);
-		miPanel.add(lblContraseña);
+		JLabel lblContraseÃ±a = new JLabel("Contrase\u00F1a");
+		lblContraseÃ±a.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblContraseÃ±a.setBounds(37, 145, 97, 42);
+		ventanaLogin.add(lblContraseÃ±a);
 		
 		textUsuario = new JTextField();
 		textUsuario.setBounds(158, 106, 232, 20);
-		miPanel.add(textUsuario);
+		ventanaLogin.add(textUsuario);
 		textUsuario.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(158, 159, 232, 20);
-		miPanel.add(passwordField);
+		ventanaLogin.add(passwordField);
 		passwordField.addKeyListener(new KeyListener() {
 
-			public void keyPressed(KeyEvent arg0) {
-				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
-					String userName = textUsuario.getText();
-					String passWord = passwordField.getText();
-					
-					String bd="empresa";
-					String url ="jdbc:mysql://localhost:3306/" + bd;
-					
-					String usuario = "root";
-					String password = null;
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==10) {
 
-					java.sql.Connection conn= null;
-					
-					java.sql.Statement stmt = null;
-					
-					ResultSet rs = null;
-					
-						try {
-							Class.forName("com.mysql.cj.jdbc.Driver");
-							
-							conn=DriverManager.getConnection(url, usuario, password);
-							
-							stmt= conn.createStatement();
-							
-							if(!userName.equals("") && !passWord.equals("")) {
-							
-							
-								String query= "Select user,pass From datos where user='"+ userName + "' && pass='" +passWord+ "'";
-							
-								rs=((java.sql.Statement) stmt).executeQuery(query);
-							
-								String user="";
-								String pass="";
-							
-								while(rs.next()) {
-									user=rs.getString("user");
-									pass=rs.getString("pass");
-								}
-							
-								if(userName.equals(user) && passWord.equals(pass)) {
-									System.out.println("Login exitoso");
-									dispose();
-								 
-									JOptionPane.showMessageDialog(null, "\n"
-											+ "Has ingresado correctamente al sistema",   "Mensaje de bienvenida",
-											JOptionPane.INFORMATION_MESSAGE);
-								}else {
-									System.out.println("Nombre o contraseña incorrectos");
-								 
-									JOptionPane.showMessageDialog(null, "\n"
-											+ "Ingresa correctamente los datos", "Acceso denegado",
-											JOptionPane.ERROR_MESSAGE);
-								}
-							}else {
-								System.out.println("Nombre o contraseña incorrectos");
-								 
-								JOptionPane.showMessageDialog(null, "\n"
-										+ "Ingresa correctamente los datos", "Acceso denegado",
-										JOptionPane.ERROR_MESSAGE);
-							}
-							
-						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
+					login();
 				}
+					
+			}
 
-			public void keyReleased(KeyEvent arg0) {				
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
 				
 			}
-			public void keyTyped(KeyEvent arg0) {
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
 				
-			}});
+			}
+		});
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/principal/gemlogotransdefinitivo1.png")));
-		lblNewLabel.setBounds(114, 11, 208, 66);
-		miPanel.add(lblNewLabel);
+		JLabel logo = new JLabel("");
+		logo.setHorizontalAlignment(SwingConstants.CENTER);
+		logo.setIcon(new ImageIcon(Login.class.getResource("/principal/gemlogotransdefinitivo1.png")));
+		logo.setBounds(114, 11, 208, 66);
+		ventanaLogin.add(logo);
 		
 		JButton btnNewButton = new JButton("Iniciar sesi\u00F3n");
 		btnNewButton.setBounds(59, 213, 138, 23);
-		miPanel.add(btnNewButton);
+		ventanaLogin.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent evt) {
 				
-				bbdd();
+				login();
 			}
 		});
 				
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.setBounds(236, 213, 138, 23);
-		miPanel.add(btnRegistrarse);
+		ventanaLogin.add(btnRegistrarse);
 		btnRegistrarse.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent evt) {
@@ -174,83 +108,66 @@ public class Login extends JFrame {
 				
 			}			
 		});
-		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
+	
 
-	public void bbdd() {
+	
+	public void login() {
 		
+		/*
+		 * el metodo login se usa para llamar a un metodo de la clase conexion que a su vez ejecuta un procedimiento sql
+		 * que lo que hace es comprobar que el usuario y la contraseÃ±a existen en la base de datos y que son correctos
+		 * y nos devuelve 1 o 0 en funcion de si los datos son correctos o no. Luego llama a el metodo empleado para
+		 * obtener los datos de usuario y nos abre la pantalla de la aplicacion.
+		 */
+				
+		int res=conexion.login(textUsuario.getText(), passwordField.getText());
 		
-		String userName = textUsuario.getText();
-		String passWord = passwordField.getText();
-		
-		String bd="empresa";
-		String url ="jdbc:mysql://localhost:3306/" + bd;
-		
-		String usuario = "root";
-		String password = null;
-
-		java.sql.Connection conn= null;
-		
-		java.sql.Statement stmt = null;
-		
-		ResultSet rs = null;
-		
-		
-			try {
-				Class.forName("com.mysql.cj.jdbc.Driver");
-				
-				conn=DriverManager.getConnection(url, usuario, password);
-				
-				stmt= conn.createStatement();
-				
-				if(!userName.equals("") && !passWord.equals("")) {
-					
-				
-					String query= "Select user,pass From datos where user='"+ userName + "' && pass='" +passWord+ "'";
-				
-					rs=((java.sql.Statement) stmt).executeQuery(query);
-				
-					String user="";
-					String pass="";
-				
-					while(rs.next()) {
-						user=rs.getString("user");
-						pass=rs.getString("pass");
-					}
-				
-					if(userName.equals(user) && passWord.equals(pass)) {
-						System.out.println("Login exitoso");
-						dispose();
-						 
-		                 JOptionPane.showMessageDialog(null, "\n"
-		                		 + "Has ingresado correctamente al sistema",   "Mensaje de bienvenida",
-		                		 JOptionPane.INFORMATION_MESSAGE);
-		                 
-		                 Tablas re=new Tablas();
-		                 userName=user;
-		                 
-					}else {
-						System.out.println("Nombre o contraseña incorrectos");
-					 
-						JOptionPane.showMessageDialog(null, "\n"
-								+ "Ingresa correctamente los datos", "Acceso denegado",
-								JOptionPane.ERROR_MESSAGE);
-					}
-				}else {
-					JOptionPane.showMessageDialog(null, "\n"
-							+ "Ingresa correctamente los datos", "Acceso denegado",
-							JOptionPane.ERROR_MESSAGE);
-				}
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		if (res==1) {
+			emp=empleado(textUsuario.getText(), passwordField.getText());
+			System.out.println(emp.toString());
+			Tablas t = new Tablas();
+			dispose();
+			System.out.println("conectado");
+		}else {
+			JOptionPane.showMessageDialog(null, "\n"
+					+ "Usuario o contraseÃ±a incorrectas", "Acceso denegado",
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
-	public void pasardatos(String user) {
+	
+
+	
+	
+	public Empleado empleado(String nombre, String contrasena) {
 		
+		/*
+		 * Este metodo necesita que se le pasen por parametros un usuario u su contraseÃ±a, de esta forma
+		 * obtiene de la base de datos todos los datos de el usuario para poder usarlos mas adelante
+		 */
+		
+		Empleado empleado=new Empleado();
+		try {
+			ResultSet a= conexion.getStatement().executeQuery("Select * from empleado where nombre = '"+nombre+"' and contrasena = '"+contrasena+"'");
+			
+			while (a.next()) {
+				empleado.setIdEmpleado(a.getInt(1));
+				empleado.setNombre(a.getString(2));
+				empleado.setApellido(a.getString(3));
+				empleado.setContrasena(a.getString(4));
+				try {
+					empleado.setCategoria(a.getString(5));
+				} catch (Exception e) {
+					System.out.println("Categoria erronea en la base de datos");
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("Error en los datos");
+		}
+
+		
+		return empleado;
 	}
 }

@@ -1,25 +1,19 @@
 package principal;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Font;
-import javax.swing.JTextField;
+
+
 
 public class Tablas extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private Login i;
 	
 	public Tablas() {
-		i= new Login();
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Tablas.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
+
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 646, 417);
@@ -30,7 +24,7 @@ public class Tablas extends JFrame{
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Tablas.class.getResource("/interfaz/gemlogotransdefinitivopeque\u00F1o.png")));
+		lblNewLabel.setIcon(new ImageIcon(Tablas.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
 		lblNewLabel.setBounds(545, 11, 75, 42);
 		contentPane.add(lblNewLabel);
 		
@@ -47,13 +41,4 @@ public class Tablas extends JFrame{
 		setVisible(true);
 	}
 
-	
-	public void nombreuser(String u) {	
-		
-			Login i = new Login();
-			i.pasardatos(textField.getText());
-			dispose();
-			
-		
-	}
 }
