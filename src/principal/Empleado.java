@@ -1,4 +1,4 @@
-package Principal;
+package principal;
 
 public class Empleado {
 	

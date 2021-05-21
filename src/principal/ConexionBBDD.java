@@ -1,4 +1,4 @@
-package Principal;
+package principal;
 
 import java.sql.*;
 import java.util.Iterator;
