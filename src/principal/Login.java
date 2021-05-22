@@ -95,7 +95,7 @@ public class Login extends JFrame {
 							if(!userName.equals("") && !passWord.equals("")) {
 							
 							
-								String query= "Select user,pass From empleados where user='"+ userName + "' && pass='" +passWord+ "'";
+								String query= "Select nombre,contrasena From empleado where nombre='"+ userName + "' && contrasena='" +passWord+ "'";
 							
 								rs=((java.sql.Statement) stmt).executeQuery(query);
 							
@@ -103,8 +103,8 @@ public class Login extends JFrame {
 								String pass="";
 							
 								while(rs.next()) {
-									user=rs.getString("user");
-									pass=rs.getString("pass");
+									user=rs.getString("nombre");
+									pass=rs.getString("contrasena");
 								}
 							
 								if(userName.equals(user) && passWord.equals(pass)) {
@@ -207,7 +207,7 @@ public class Login extends JFrame {
 				if(!userName.equals("") && !passWord.equals("")) {
 					
 				
-					String query= "Select user,pass From datos where user='"+ userName + "' && pass='" +passWord+ "'";
+					String query= "Select nombre,contrasena From empleado where nombre='"+ userName + "' && contrasena='" +passWord+ "'";
 				
 					rs=((java.sql.Statement) stmt).executeQuery(query);
 				
@@ -215,8 +215,8 @@ public class Login extends JFrame {
 					String pass="";
 				
 					while(rs.next()) {
-						user=rs.getString("user");
-						pass=rs.getString("pass");
+						user=rs.getString("nombre");
+						pass=rs.getString("contrasena");
 					}
 				
 					if(userName.equals(user) && passWord.equals(pass)) {

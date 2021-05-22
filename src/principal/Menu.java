@@ -149,7 +149,9 @@ public class Menu extends JFrame{
 		
 		JButton btnTareasAsignadas = new JButton("Tareas asignadas");
 		btnTareasAsignadas.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
 		panel_2.setLayout(new GridLayout(0, 2, 10, 5));
@@ -157,18 +159,51 @@ public class Menu extends JFrame{
 		
 		JButton btnTareasRealizadas = new JButton("Tareas realizadas");
 		panel_2.add(btnTareasRealizadas);
+		btnTareasRealizadas.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+		
+			}
+			
+		});
 		
 		JButton btnProduccionUsuario = new JButton("Producci\u00F3n usuario");
 		panel_2.add(btnProduccionUsuario);
-		
+		btnProduccionUsuario.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+			
+		});
 		JButton btnJornadaUsuario = new JButton("Jornada usuario");
 		panel_2.add(btnJornadaUsuario);
+		btnJornadaUsuario.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+			
+		});
 		
 		JButton btnNewButton = new JButton("New button");
 		panel_2.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+
+			}
+		});
 		
 		JButton btnAdministrarCuenta = new JButton("Administrar cuenta");
 		panel_2.add(btnAdministrarCuenta);
+		btnAdministrarCuenta.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+			
+		});
 		setVisible(true);
 	
 		//panel_1.setVisible(true);
