@@ -128,7 +128,7 @@ public class Login extends JFrame {
 		if (res==1) {
 			emp=empleado(textUsuario.getText(), passwordField.getText());
 			System.out.println(emp.toString());
-			Tablas t = new Tablas();
+			Menu t = new Menu();
 			dispose();
 			System.out.println("conectado");
 		}else {
