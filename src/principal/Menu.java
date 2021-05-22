@@ -151,6 +151,7 @@ public class Menu extends JFrame{
 		btnTareasAsignadas.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				
 			}
 		});
@@ -162,6 +163,7 @@ public class Menu extends JFrame{
 		btnTareasRealizadas.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 		
 			}
 			
@@ -172,6 +174,7 @@ public class Menu extends JFrame{
 		btnProduccionUsuario.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				
 			}
 			
@@ -181,6 +184,7 @@ public class Menu extends JFrame{
 		btnJornadaUsuario.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				
 			}
 			
@@ -191,6 +195,7 @@ public class Menu extends JFrame{
 		btnNewButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 
 			}
 		});
@@ -200,6 +205,7 @@ public class Menu extends JFrame{
 		btnAdministrarCuenta.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				
 			}
 			
