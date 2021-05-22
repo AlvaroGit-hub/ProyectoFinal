@@ -32,7 +32,7 @@ public class Login extends JFrame {
 	private JPasswordField passwordField;
 
 	public Login() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/principal/gemlogotransdefinitivo1.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Usuario\\git\\ProyectoFinal\\src\\principal\\gemlogotransdefinitivopeque\u00F1o.png"));
 		setTitle("Gesti\u00F3n Empresarial");
 		
 		
@@ -95,7 +95,7 @@ public class Login extends JFrame {
 							if(!userName.equals("") && !passWord.equals("")) {
 							
 							
-								String query= "Select user,pass From datos where user='"+ userName + "' && pass='" +passWord+ "'";
+								String query= "Select user,pass From empleados where user='"+ userName + "' && pass='" +passWord+ "'";
 							
 								rs=((java.sql.Statement) stmt).executeQuery(query);
 							
@@ -148,7 +148,7 @@ public class Login extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/principal/gemlogotransdefinitivo1.png")));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Usuario\\git\\ProyectoFinal\\src\\principal\\gemlogotransdefinitivo1.png"));
 		lblNewLabel.setBounds(114, 11, 208, 66);
 		miPanel.add(lblNewLabel);
 		
@@ -227,7 +227,7 @@ public class Login extends JFrame {
 		                		 + "Has ingresado correctamente al sistema",   "Mensaje de bienvenida",
 		                		 JOptionPane.INFORMATION_MESSAGE);
 		                 
-		                 Menu re=new Menu();
+		                 Menu m=new Menu();
 		                 userName=user;
 		                 
 					}else {

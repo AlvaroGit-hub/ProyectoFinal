@@ -24,6 +24,7 @@ public class Menu extends JFrame{
 	
 	
 	public Menu() {
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Usuario\\git\\ProyectoFinal\\src\\principal\\gemlogotransdefinitivo1.png"));
 		setTitle("Gesti\u00F3n Empresarial");
 		this.setResizable(false);
@@ -36,20 +37,17 @@ public class Menu extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Menu.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
-		lblNewLabel.setBounds(33, 11, 75, 42);
-		contentPane.add(lblNewLabel);
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
 		panel.setBounds(13, 11, 607, 356);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		
+		
 //		JPanel panel_1 = new JPanel();
 //		panel_1.setBackground(Color.GRAY);
-//		panel_1.setBounds(10, 59, 587, 235);
+//		panel_1.setBounds(13, 59, 587, 235);
 //		panel.add(panel_1);
 //		panel_1.setLayout(new GridLayout(0, 2, 10, 5));
 //		
@@ -134,39 +132,43 @@ public class Menu extends JFrame{
 			
 		});
 		
+		JLabel lblLogo = new JLabel("New label");
+		lblLogo.setBounds(26, 0, 75, 42);
+		panel.add(lblLogo);
+		lblLogo.setIcon(new ImageIcon(Menu.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
+		
+		JLabel lblNombreUsuario = new JLabel("");
+		lblNombreUsuario.setBounds(466, 14, 75, 14);
+		panel.add(lblNombreUsuario);
+	
+		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.GRAY);
-		panel_2.setBounds(10, 59, 587, 235);
+		panel_2.setBounds(13, 59, 587, 235);
 		panel.add(panel_2);
 		
 		JButton btnTareasAsignadas = new JButton("Tareas asignadas");
-		btnTareasAsignadas.setBounds(72, 29, 175, 23);
 		btnTareasAsignadas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		panel_2.setLayout(null);
+		panel_2.setLayout(new GridLayout(0, 2, 10, 5));
 		panel_2.add(btnTareasAsignadas);
 		
-		JButton btnProduccionUsuario = new JButton("Producci\u00F3n usuario");
-		btnProduccionUsuario.setBounds(72, 92, 175, 23);
-		panel_2.add(btnProduccionUsuario);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(72, 161, 89, 23);
-		panel_2.add(btnNewButton);
-		
 		JButton btnTareasRealizadas = new JButton("Tareas realizadas");
-		btnTareasRealizadas.setBounds(319, 29, 175, 23);
 		panel_2.add(btnTareasRealizadas);
 		
-		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.setBounds(319, 92, 89, 23);
-		panel_2.add(btnNewButton_3);
+		JButton btnProduccionUsuario = new JButton("Producci\u00F3n usuario");
+		panel_2.add(btnProduccionUsuario);
 		
-		JButton btnNewButton_4 = new JButton("New button");
-		btnNewButton_4.setBounds(319, 161, 89, 23);
-		panel_2.add(btnNewButton_4);
+		JButton btnJornadaUsuario = new JButton("Jornada usuario");
+		panel_2.add(btnJornadaUsuario);
+		
+		JButton btnNewButton = new JButton("New button");
+		panel_2.add(btnNewButton);
+		
+		JButton btnAdministrarCuenta = new JButton("Administrar cuenta");
+		panel_2.add(btnAdministrarCuenta);
 		setVisible(true);
 	
 		//panel_1.setVisible(true);

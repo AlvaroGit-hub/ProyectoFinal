@@ -36,7 +36,7 @@ public class Registro extends JFrame {
 		this.setResizable(false);
 		
 		setTitle("Genti\u00F3n Empresarial");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Registro.class.getResource("/interfaz/gemlogotransdefinitivo1.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Usuario\\git\\ProyectoFinal\\src\\principal\\gemlogotransdefinitivo1.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 554, 376);
 		contentPane = new JPanel();
@@ -67,7 +67,7 @@ public class Registro extends JFrame {
 		contentPane.add(lblCategoria);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(Registro.class.getResource("/principal/gemlogotransdefinitivo1.png")));
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\Usuario\\git\\ProyectoFinal\\src\\principal\\gemlogotransdefinitivo1.png"));
 		lblLogo.setBounds(164, 11, 237, 59);
 		contentPane.add(lblLogo);
 			
