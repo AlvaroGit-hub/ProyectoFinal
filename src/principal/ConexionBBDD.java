@@ -10,12 +10,16 @@ public class ConexionBBDD {
 	private Statement smt;
 	private ResultSet rs;
 	private CallableStatement cls;
+	private String[] columnas;
+	private String[][]datos;
 	
-    public void ConnexionBBDD() {
+	public void ConnexionBBDD() {
     	con=null;
     	smt=null;
     	rs=null;
     	cls=null;
+    	columnas=null;
+    	datos=null;
     }
     	
     public Connection conectar() {
@@ -78,32 +82,29 @@ public class ConexionBBDD {
     	return smt;
     }
     
-    public String[][] consultar(String consulta) {
-		
-		String nombreColumnas[]=null;
-		String resultado [][]=null;
+    public void consultar(String consulta) {
 		int posicion=0;
     	
     	try {
 			
 			rs = conectar().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY).executeQuery(consulta);
 			
-			nombreColumnas= new String[rs.getMetaData().getColumnCount()];
-			for(int i=0;i<nombreColumnas.length; i++) {
-				nombreColumnas[i]= rs.getMetaData().getColumnName(i+1);
+			this.columnas= new String[rs.getMetaData().getColumnCount()];
+			for(int i=0;i<this.columnas.length; i++) {
+				this.columnas[i]= rs.getMetaData().getColumnName(i+1);
 			}
 			
+			
 			rs.last();
-			resultado=new String[rs.getRow()][rs.getMetaData().getColumnCount()];
+			this.datos=new String[rs.getRow()][rs.getMetaData().getColumnCount()];
 			rs.beforeFirst();
 			
 			while (rs.next()) {
 				for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
-					resultado[posicion][i]=rs.getString(i+1);
+					this.datos[posicion][i]=rs.getString(i+1);
 				}
 				posicion++;
 			}
-			
 			
 		} catch (SQLException e) {
 			System.out.println("Consulta Erronea");
@@ -120,8 +121,19 @@ public class ConexionBBDD {
 				e.printStackTrace();
 			}
 		}
-		return resultado;
+		
     }    
+    
+    
+    public String[] getColumnas() {
+		return columnas;
+	}
+
+	public String[][] getDatos() {
+		return datos;
+	}
+    
+    
     
 	public void fichar(int id_usuario) {
 		try {
