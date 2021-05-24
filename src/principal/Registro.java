@@ -15,6 +15,7 @@ public class Registro extends JFrame {
 	private JTextField txtApellidos;
 	private JPasswordField contrasena;
 	private ConexionBBDD conexion;
+	private JComboBox cBCategoria;
 
 	public Registro() {
 		
@@ -74,7 +75,7 @@ public class Registro extends JFrame {
 		contrasena.setBounds(210, 171, 264, 20);
 		ventanaNuevoUser.add(contrasena);
 		
-		JComboBox cBCategoria = new JComboBox();
+		cBCategoria = new JComboBox();
 		cBCategoria.setModel(new DefaultComboBoxModel(new String[] {"Jefe", "Encargado", "Trabajador"}));
 		cBCategoria.setBounds(210, 201, 264, 22);
 		ventanaNuevoUser.add(cBCategoria);
@@ -92,13 +93,13 @@ public class Registro extends JFrame {
 						JOptionPane.showMessageDialog(null, "\n"
 								+ "Nuevo usuario creado con exito", "Usuario creado",
 								JOptionPane.INFORMATION_MESSAGE);
-						Login i =new Login();
+						
 					}else {
 						dispose();
 						JOptionPane.showMessageDialog(null, "\n"
 								+ "Datos erronesos, accion cancelada", "Usuario no creado",
 								JOptionPane.ERROR_MESSAGE);
-						Login i =new Login();
+						
 					}
 
 				}

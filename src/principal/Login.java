@@ -103,7 +103,7 @@ public class Login extends JFrame {
 		btnRegistrarse.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent evt) {
-				dispose();
+//				dispose();
 				Registro r = new Registro();
 				
 			}			
