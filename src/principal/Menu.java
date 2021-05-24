@@ -55,7 +55,7 @@ public class Menu extends JFrame{
 		panel.setLayout(null);
 		
 		
-		
+	
 //		JPanel panel_1 = new JPanel();
 //		panel_1.setBackground(Color.GRAY);
 //		panel_1.setBounds(13, 59, 587, 235);
@@ -88,7 +88,10 @@ public class Menu extends JFrame{
 //		btnInformacionProduccion.addActionListener(new ActionListener() {
 //			
 //			public void actionPerformed(ActionEvent arg0) {
-//				dispose();
+//				 contenido.removeAll();
+//				 contenido.add(paneles.botonPiezas());
+//				 contenido.repaint();
+//				 contenido.revalidate();
 //				
 //			}
 //		});
@@ -99,7 +102,10 @@ public class Menu extends JFrame{
 //		btnInformacionTareas.addActionListener(new ActionListener() {
 //			
 //			public void actionPerformed(ActionEvent arg0) {
-//				dispose();
+//				contenido.removeAll();
+//				contenido.add(paneles.botonTareas();
+//				contenido.repaint();
+//				contenido.revalidate();
 //				
 //			}
 //		});
@@ -162,44 +168,83 @@ public class Menu extends JFrame{
 		menuBar.add(btnEmpelados);
 		btnEmpelados.addActionListener(new ActionListener() {
 			
-						public void actionPerformed(ActionEvent evt) {
-					        contenido.removeAll();
-							contenido.add(paneles.botonEmpleados());
-							contenido.repaint();
-							contenido.revalidate();
-							}
-						
-					});
+				public void actionPerformed(ActionEvent evt) {
+//					contenido.removeAll();
+//					contenido.add(paneles.botonEmpleados());
+//					contenido.repaint();
+//					contenido.revalidate();
+				}		
+		});
 		
-		JButton btnTareasRealizadas_1 = new JButton("Tareas realizadas");
-		btnTareasRealizadas_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnTareasRealizadas_1.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnTareasRealizadas_1);
+		JButton btnPiezas = new JButton("Mostrar piezas");
+		btnPiezas.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnPiezas.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnPiezas);
+		btnPiezas.addActionListener(new ActionListener() {
+			
+				public void actionPerformed(ActionEvent evt) {
+					contenido.removeAll();
+					contenido.add(paneles.botonPiezas());
+					contenido.repaint();
+					contenido.revalidate();
+					
+				}
+			
+		});
 		
 		JButton btnProduccionUsuario_1 = new JButton("Producci\u00F3n usuario");
 		btnProduccionUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnProduccionUsuario_1.setMargin(new Insets(14, 14, 14, 14));
 		menuBar.add(btnProduccionUsuario_1);
+		btnProduccionUsuario_1.addActionListener(new ActionListener() {
+			
+				public void actionPerformed(ActionEvent evt) {
+					contenido.removeAll();
+					contenido.add(paneles.botonProduccionUsuario(empleado.getIdEmpleado()));
+					contenido.repaint();
+					contenido.revalidate();
+				}
+			
+		});
 		
-		JButton btnJornadaUsuario_1 = new JButton("Jornada usuario");
-		btnJornadaUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnJornadaUsuario_1.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnJornadaUsuario_1);
+//		JButton btnJornadaUsuario_1 = new JButton("Jornada usuario");
+//		btnJornadaUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+//		btnJornadaUsuario_1.setMargin(new Insets(14, 14, 14, 14));
+//		menuBar.add(btnJornadaUsuario_1);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnNewButton_2);
+//		JButton btnNewButton_2 = new JButton("New button");
+//		btnNewButton_2.setMargin(new Insets(14, 14, 14, 14));
+//		menuBar.add(btnNewButton_2);
 		
 		JButton btnAdministrarCuenta_1 = new JButton("Administrar cuenta");
 		btnAdministrarCuenta_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnAdministrarCuenta_1.setMargin(new Insets(14, 14, 14, 14));
 		menuBar.add(btnAdministrarCuenta_1);
+		btnAdministrarCuenta_1.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+			}
+		});
 		
 		JButton btnSalir_1 = new JButton("Salir");
 		btnSalir_1.setMargin(new Insets(14, 14, 14, 14));
 		btnSalir_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		menuBar.add(btnSalir_1);
+		btnSalir_1.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				Login i=new Login();
+			}
+		});
+		
 		setVisible(true);
+		
+	}
+	public Menu() {
 		
 	}
 }
