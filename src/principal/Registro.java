@@ -1,3 +1,4 @@
+
 package principal;
 
 import java.awt.*;
@@ -120,4 +121,6 @@ public class Registro extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
+
 }
+
