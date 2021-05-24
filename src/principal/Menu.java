@@ -54,6 +54,7 @@ public class Menu extends JFrame{
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+
 		
 	
 //		JPanel panel_1 = new JPanel();
@@ -131,6 +132,7 @@ public class Menu extends JFrame{
 //			
 //		});
 		
+
 		JLabel lblUser = new JLabel("Usuario :");
 		lblUser.setBounds(397, 43, 75, 14);
 		panel.add(lblUser);
@@ -212,9 +214,24 @@ public class Menu extends JFrame{
 //		btnJornadaUsuario_1.setMargin(new Insets(14, 14, 14, 14));
 //		menuBar.add(btnJornadaUsuario_1);
 		
+
 //		JButton btnNewButton_2 = new JButton("New button");
 //		btnNewButton_2.setMargin(new Insets(14, 14, 14, 14));
 //		menuBar.add(btnNewButton_2);
+
+		JButton btnMostrarPiezas = new JButton("Mostrar Piezas");
+		btnMostrarPiezas.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnMostrarPiezas);
+		btnMostrarPiezas.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				 contenido.removeAll();
+					contenido.add(paneles.botonPiezas());
+					contenido.repaint();
+					contenido.revalidate();
+					}
+		});
+
 		
 		JButton btnAdministrarCuenta_1 = new JButton("Administrar cuenta");
 		btnAdministrarCuenta_1.setAlignmentX(Component.CENTER_ALIGNMENT);

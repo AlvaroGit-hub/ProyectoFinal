@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 
 public class RegistroPiezas extends JFrame {
 
@@ -24,6 +26,10 @@ public class RegistroPiezas extends JFrame {
 	private ConexionBBDD conexion;
 
 	public RegistroPiezas() {
+
+		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistroPiezas.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
+
 		conexion=new ConexionBBDD();
 		setTitle("Gesti\u00F3n Empresarial");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,9 +91,18 @@ public class RegistroPiezas extends JFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
+
 				Menu m=new Menu();
 				
 			}
 		});
+
+				Menu m=new Menu(null);
+				
+			}
+		});
+		
+		setVisible(true);
+
 	}
 }

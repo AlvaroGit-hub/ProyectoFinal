@@ -10,6 +10,7 @@ public class ConexionBBDD {
 	private Statement smt;
 	private ResultSet rs;
 	private CallableStatement cls;
+	private PreparedStatement ps;
 	private String[] columnas;
 	private String[][]datos;
 	
@@ -82,6 +83,7 @@ public class ConexionBBDD {
     	return smt;
     }
     
+   
     public void consultar(String consulta) {
 		int posicion=0;
     	
@@ -219,6 +221,7 @@ public class ConexionBBDD {
 		}
 		return respuesta;
 	}
+	
 	
 	public void nuevoTarea(int idPieza, int cantidadDeseada) {
 		try {
