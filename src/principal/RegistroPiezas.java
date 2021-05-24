@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -19,7 +20,7 @@ public class RegistroPiezas extends JFrame {
 	private JPanel contentPane;
 	private JTextField textNombre;
 	private JTextField textPrecio;
-	private JTextField textDescripcion;
+	private JTextPane textDescripcion;
 	private ConexionBBDD conexion;
 
 	public RegistroPiezas() {
@@ -58,8 +59,8 @@ public class RegistroPiezas extends JFrame {
 		textPrecio.setBounds(160, 95, 264, 20);
 		contentPane.add(textPrecio);
 		
-		textDescripcion = new JTextField();
-		textDescripcion.setColumns(10);
+		textDescripcion = new JTextPane();
+		//textDescripcion.setColumns(10);
 		textDescripcion.setBounds(160, 143, 264, 69);
 		contentPane.add(textDescripcion);
 		
