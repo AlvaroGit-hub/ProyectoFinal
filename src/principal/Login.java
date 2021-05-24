@@ -86,7 +86,7 @@ public class Login extends JFrame {
 		logo.setBounds(114, 11, 208, 66);
 		ventanaLogin.add(logo);
 		
-		JButton btnNewButton = new JButton("Iniciar sesi\u00F3n");
+		JButton btnNewButton = new JButton("Iniciar sesion");
 		btnNewButton.setBounds(59, 213, 138, 23);
 		ventanaLogin.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener(){
@@ -128,7 +128,7 @@ public class Login extends JFrame {
 		if (res==1) {
 			emp=empleado(textUsuario.getText(), passwordField.getText());
 			System.out.println(emp.toString());
-			Menu t = new Menu();
+			Menu t = new Menu(emp);
 			dispose();
 			System.out.println("conectado");
 		}else {
