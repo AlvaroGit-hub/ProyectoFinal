@@ -66,5 +66,7 @@ public class Paneles {
 		return panel_2;
 	}
 	
+	
+	
 
 }
