@@ -1,6 +1,7 @@
 package principal;
 
 import java.sql.*;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class ConexionBBDD {
@@ -9,15 +10,22 @@ public class ConexionBBDD {
 	private Statement smt;
 	private ResultSet rs;
 	private CallableStatement cls;
+	private String[] columnas;
+	private String[][]datos;
 	
-    public void ConnexionBBDD() {
+	public void ConnexionBBDD() {
     	con=null;
     	smt=null;
     	rs=null;
     	cls=null;
+    	columnas=null;
+    	datos=null;
     }
     	
     public Connection conectar() {
+    	/*
+    	 * clase para realizar las conexiones a la base de datos
+    	 */
     	
     	try {
             
@@ -38,7 +46,7 @@ public class ConexionBBDD {
     
 
     public int login(String nombre, String contrasena) {
-    	System.out.println("login");
+    	
     	int respuesta=0;
     	try {
 			cls = conectar().prepareCall("{?=call login_usuario(?,?)}");
@@ -47,7 +55,7 @@ public class ConexionBBDD {
 			cls.registerOutParameter(1, java.sql.Types.INTEGER);
 			cls.executeUpdate();
 			respuesta=cls.getInt(1);
-			System.out.println(respuesta);
+			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}finally {
@@ -67,34 +75,36 @@ public class ConexionBBDD {
     	return respuesta;
     }
     
+    public Statement getStatement() throws SQLException {
+    	
+			smt = conectar().createStatement();
+	
+    	return smt;
+    }
     
-
-    public String[][] consultar(String consulta) {
-		
-		String nombreColumnas[]=null;
-		String resultado [][]=null;
+    public void consultar(String consulta) {
 		int posicion=0;
     	
     	try {
 			
 			rs = conectar().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY).executeQuery(consulta);
 			
-			nombreColumnas= new String[rs.getMetaData().getColumnCount()];
-			for(int i=0;i<nombreColumnas.length; i++) {
-				nombreColumnas[i]= rs.getMetaData().getColumnName(i+1);
+			this.columnas= new String[rs.getMetaData().getColumnCount()];
+			for(int i=0;i<this.columnas.length; i++) {
+				this.columnas[i]= rs.getMetaData().getColumnName(i+1);
 			}
 			
+			
 			rs.last();
-			resultado=new String[rs.getRow()][rs.getMetaData().getColumnCount()];
+			this.datos=new String[rs.getRow()][rs.getMetaData().getColumnCount()];
 			rs.beforeFirst();
 			
 			while (rs.next()) {
 				for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
-					resultado[posicion][i]=rs.getString(i+1);
+					this.datos[posicion][i]=rs.getString(i+1);
 				}
 				posicion++;
 			}
-			
 			
 		} catch (SQLException e) {
 			System.out.println("Consulta Erronea");
@@ -111,8 +121,19 @@ public class ConexionBBDD {
 				e.printStackTrace();
 			}
 		}
-		return resultado;
+		
     }    
+    
+    
+    public String[] getColumnas() {
+		return columnas;
+	}
+
+	public String[][] getDatos() {
+		return datos;
+	}
+    
+    
     
 	public void fichar(int id_usuario) {
 		try {
@@ -162,15 +183,26 @@ public class ConexionBBDD {
 		}
 	}
 
-	public void nuevoUsuario(String nombre,String apellidos,String contrasena,String categoria) {
+	public int nuevoUsuario(String nombre,String apellidos,String contrasena,String categoria) {
+		int respuesta=0;
 		try {
 			cls = conectar().prepareCall("{call nuevo_empleado(?,?,?,?)}");
-			cls.setString(1, nombre);
-			cls.setString(2, apellidos);
-			cls.setString(3, contrasena);
-			cls.setString(4, categoria);
-			cls.executeUpdate();
-		} catch (Exception e) {
+			if (nombre.isEmpty() || apellidos.isEmpty() || contrasena.isEmpty()) {
+				respuesta=0;
+			}else {
+				
+				cls.setString(1, nombre);
+				cls.setString(2, apellidos);
+				cls.setString(3, contrasena);
+				cls.setString(4, categoria);
+				cls.executeUpdate();
+				respuesta=1;
+			}
+
+			
+		} catch (SQLException e) {
+			System.out.println("Error en los datos introducidos");
+		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
@@ -185,6 +217,7 @@ public class ConexionBBDD {
 				e.printStackTrace();
 			}
 		}
+		return respuesta;
 	}
 	
 	public void nuevoTarea(int idPieza, int cantidadDeseada) {

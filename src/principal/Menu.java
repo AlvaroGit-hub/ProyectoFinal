@@ -1,3 +1,4 @@
+
 package principal;
 
 import java.awt.BorderLayout;
@@ -17,20 +18,30 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.Component;
+import javax.swing.JMenuBar;
+import java.awt.Insets;
+import javax.swing.JComboBox;
+import javax.swing.JMenuItem;
+import java.awt.CardLayout;
 
 public class Menu extends JFrame{
 
 	private JPanel contentPane;
+	private Paneles paneles;
 	
 	
-	public Menu() {
+	public Menu(Empleado empleado) {
+		
+		paneles=new Paneles();
+		
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Usuario\\git\\ProyectoFinal\\src\\principal\\gemlogotransdefinitivo1.png"));
 		setTitle("Gesti\u00F3n Empresarial");
 		this.setResizable(false);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 646, 417);
+		setBounds(100, 100, 1080, 960);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -39,7 +50,7 @@ public class Menu extends JFrame{
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
-		panel.setBounds(13, 11, 607, 356);
+		panel.setBounds(13, 11, 1051, 806);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -115,97 +126,81 @@ public class Menu extends JFrame{
 //		});
 		
 		JLabel lblUser = new JLabel("Usuario :");
-		lblUser.setBounds(382, 11, 75, 14);
+		lblUser.setBounds(397, 43, 75, 14);
 		panel.add(lblUser);
 		lblUser.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(221, 322, 171, 23);
-		panel.add(btnSalir);
-		btnSalir.addActionListener(new ActionListener() {
-
-			
-			public void actionPerformed(ActionEvent evt) {
-				dispose();
-				Login l=new Login();
-			}
-			
-		});
-		
-		JLabel lblLogo = new JLabel("New label");
-		lblLogo.setBounds(26, 0, 75, 42);
+		JLabel lblLogo = new JLabel("Logo");
+		lblLogo.setBounds(26, 29, 75, 45);
 		panel.add(lblLogo);
 		lblLogo.setIcon(new ImageIcon(Menu.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
 		
-		JLabel lblNombreUsuario = new JLabel("");
-		lblNombreUsuario.setBounds(466, 14, 75, 14);
+		JLabel lblNombreUsuario = new JLabel(empleado.getNombre());
+		lblNombreUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNombreUsuario.setBounds(481, 43, 75, 14);
 		panel.add(lblNombreUsuario);
 	
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.GRAY);
-		panel_2.setBounds(13, 59, 587, 235);
-		panel.add(panel_2);
+		JPanel contenido = new JPanel();
+		contenido.setBackground(Color.GRAY);
+		contenido.setBounds(10, 147, 1031, 648);
+		panel.add(contenido);
+		contenido.setLayout(new CardLayout(0, 0));
 		
-		JButton btnTareasAsignadas = new JButton("Tareas asignadas");
-		btnTareasAsignadas.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		panel_2.setLayout(new GridLayout(0, 2, 10, 5));
-		panel_2.add(btnTareasAsignadas);
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		menuBar.setBorderPainted(false);
+		menuBar.setAlignmentY(Component.CENTER_ALIGNMENT);
+		menuBar.setBackground(Color.GRAY);
+		menuBar.setForeground(Color.GRAY);
+		menuBar.setBounds(218, 83, 732, 30);
+		panel.add(menuBar);
 		
-		JButton btnTareasRealizadas = new JButton("Tareas realizadas");
-		panel_2.add(btnTareasRealizadas);
-		btnTareasRealizadas.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
+		JButton btnEmpelados = new JButton("Mostrar Empleados");
+		btnEmpelados.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnEmpelados.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnEmpelados);
+		btnEmpelados.addActionListener(new ActionListener() {
+			
+						public void actionPerformed(ActionEvent evt) {
+					        contenido.removeAll();
+							contenido.add(paneles.botonEmpleados());
+							contenido.repaint();
+							contenido.revalidate();
+							}
+						
+					});
 		
-			}
-			
-		});
+		JButton btnTareasRealizadas_1 = new JButton("Tareas realizadas");
+		btnTareasRealizadas_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnTareasRealizadas_1.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnTareasRealizadas_1);
 		
-		JButton btnProduccionUsuario = new JButton("Producci\u00F3n usuario");
-		panel_2.add(btnProduccionUsuario);
-		btnProduccionUsuario.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-			
-		});
-		JButton btnJornadaUsuario = new JButton("Jornada usuario");
-		panel_2.add(btnJornadaUsuario);
-		btnJornadaUsuario.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-			
-		});
+		JButton btnProduccionUsuario_1 = new JButton("Producci\u00F3n usuario");
+		btnProduccionUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnProduccionUsuario_1.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnProduccionUsuario_1);
 		
-		JButton btnNewButton = new JButton("New button");
-		panel_2.add(btnNewButton);
-		btnNewButton.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-
-			}
-		});
+		JButton btnJornadaUsuario_1 = new JButton("Jornada usuario");
+		btnJornadaUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnJornadaUsuario_1.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnJornadaUsuario_1);
 		
-		JButton btnAdministrarCuenta = new JButton("Administrar cuenta");
-		panel_2.add(btnAdministrarCuenta);
-		btnAdministrarCuenta.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-			
-		});
+		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnNewButton_2);
+		
+		JButton btnAdministrarCuenta_1 = new JButton("Administrar cuenta");
+		btnAdministrarCuenta_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnAdministrarCuenta_1.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnAdministrarCuenta_1);
+		
+		JButton btnSalir_1 = new JButton("Salir");
+		btnSalir_1.setMargin(new Insets(14, 14, 14, 14));
+		btnSalir_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		menuBar.add(btnSalir_1);
 		setVisible(true);
-	
-		//panel_1.setVisible(true);
+		
 	}
 }
+

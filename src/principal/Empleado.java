@@ -28,6 +28,10 @@ public class Empleado {
 		}
 	}
 	
+	public String toString() {
+		return "Nombre: "+nombre+" Apellidos: "+apellido+" Categoria: "+categoria;
+	}
+	
 	public int getIdEmpleado() {
 		return idEmpleado;
 	}

@@ -238,4 +238,22 @@ end;
 
 
 
+create function login_usuario(nombre_user varchar(30), contraseña_user varchar(30))
+returns tinyint 
+begin
+	declare login tinyint;
+	declare n varchar(50);
+	declare c varchar(50);
+	
+	set n = (select nombre from empleado where nombre = nombre_user and contrasena=contrasena_user);
+	set c = (select contrasena from empleado where contrasena=contrasena_user and nombre=nombre_user);
+	
+	if 	(n is null)and(c is null) then 
+		set login=0;
+	else
+		set login=1;
+	end if;
 
+
+	return login;
+end;
