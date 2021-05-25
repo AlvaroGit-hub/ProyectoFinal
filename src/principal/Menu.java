@@ -34,8 +34,7 @@ public class Menu extends JFrame{
 	public Menu(Empleado empleado) {
 		
 		paneles=new Paneles();
-		
-		
+
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Usuario\\git\\ProyectoFinal\\src\\principal\\gemlogotransdefinitivo1.png"));
 		setTitle("Gesti\u00F3n Empresarial");
 		this.setResizable(false);
@@ -91,50 +90,48 @@ public class Menu extends JFrame{
 		menuBar.add(btnEmpelados);
 		btnEmpelados.addActionListener(new ActionListener() {
 			
-						public void actionPerformed(ActionEvent evt) {
-					        contenido.removeAll();
-							contenido.add(paneles.botonEmpleados());
-							contenido.repaint();
-							contenido.revalidate();
-							}
-						
-					});
+
+				public void actionPerformed(ActionEvent evt) {
+					contenido.removeAll();
+					contenido.add(paneles.botonEmpleados());
+					contenido.repaint();
+					contenido.revalidate();
+				}		
+		});
 		
-		JButton btnTareasRealizadas_1 = new JButton("Tareas realizadas");
-		btnTareasRealizadas_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnTareasRealizadas_1.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnTareasRealizadas_1);
+		JButton btnPiezas = new JButton("Mostrar piezas");
+		btnPiezas.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnPiezas.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnPiezas);
+		btnPiezas.addActionListener(new ActionListener() {
+			
+				public void actionPerformed(ActionEvent evt) {
+					contenido.removeAll();
+					contenido.add(paneles.botonPiezas());
+					contenido.repaint();
+					contenido.revalidate();
+					
+				}
+			
+		});
 		
-		JButton btnProduccion = new JButton("Producci\u00F3n");
-		btnProduccion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-		        contenido.removeAll();
-				contenido.add(paneles.produccion());
-				contenido.repaint();
-				contenido.revalidate();
-			}
+		JButton btnProduccionUsuario_1 = new JButton("Producci\u00F3n usuario");
+		btnProduccionUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnProduccionUsuario_1.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnProduccionUsuario_1);
+		btnProduccionUsuario_1.addActionListener(new ActionListener() {
+			
+				public void actionPerformed(ActionEvent evt) {
+					contenido.removeAll();
+					contenido.add(paneles.botonProduccionUsuario(empleado.getIdEmpleado()));
+					contenido.repaint();
+					contenido.revalidate();
+				}
+			
 		});
 		btnProduccion.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnProduccion.setMargin(new Insets(14, 14, 14, 14));
 		menuBar.add(btnProduccion);
-		
-		JButton btnJornadaUsuario_1 = new JButton("Jornada usuario");
-		btnJornadaUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnJornadaUsuario_1.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnJornadaUsuario_1);
-		
-		JButton btnMostrarPiezas = new JButton("Mostrar Piezas");
-		btnMostrarPiezas.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnMostrarPiezas);
-		btnMostrarPiezas.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				 contenido.removeAll();
-					contenido.add(paneles.botonPiezas());
-					contenido.repaint();
-					contenido.revalidate();
-					}
-		});
 		
 		JButton btnAdministrarCuenta_1 = new JButton("Administrar cuenta");
 		btnAdministrarCuenta_1.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -145,6 +142,14 @@ public class Menu extends JFrame{
 		btnSalir_1.setMargin(new Insets(14, 14, 14, 14));
 		btnSalir_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		menuBar.add(btnSalir_1);
+
+		btnSalir_1.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		
 		setVisible(true);
 		
 	}

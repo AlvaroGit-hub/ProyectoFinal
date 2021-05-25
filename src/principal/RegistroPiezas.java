@@ -1,3 +1,4 @@
+
 package principal;
 
 import java.awt.BorderLayout;
@@ -8,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
@@ -15,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Toolkit;
+
 
 public class RegistroPiezas extends JFrame {
 
@@ -25,8 +28,10 @@ public class RegistroPiezas extends JFrame {
 	private ConexionBBDD conexion;
 
 	public RegistroPiezas() {
+
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistroPiezas.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
+
 		conexion=new ConexionBBDD();
 		setTitle("Gesti\u00F3n Empresarial");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,7 +82,21 @@ public class RegistroPiezas extends JFrame {
 		btnRegistro.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				conexion.nuevaPieza(textNombre.getName(),Float.parseFloat(textPrecio.getText()),textDescripcion.getText());
+				int respuesta = conexion.nuevaPieza(textNombre.getText(),Float.parseFloat(textPrecio.getText()),textDescripcion.getText());
+				
+				
+				if (respuesta==1) {
+					dispose();
+					JOptionPane.showMessageDialog(null, "\n"
+							+ "Nuevo pieza creada con exito", "Pieza creada",
+							JOptionPane.INFORMATION_MESSAGE);
+					
+				}else {
+					dispose();
+					JOptionPane.showMessageDialog(null, "\n"
+							+ "Datos erroneos, accion cancelada", "Pieza no creada",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		
@@ -88,11 +107,11 @@ public class RegistroPiezas extends JFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Menu m=new Menu(null);
-				
+	
 			}
-		});
-		
+		});		
 		setVisible(true);
+
 	}
 }
+

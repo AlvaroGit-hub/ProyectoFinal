@@ -1,7 +1,34 @@
+
 package principal;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Arrays;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.Color;
+import java.awt.Dimension;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,18 +50,23 @@ import javax.swing.JTextPane;
 import java.awt.Font;
 import javax.swing.JTextField;
 
+
 public class ModificarPiezas extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private ConexionBBDD conexion;
+	private JTextField textId;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	
+
 	public ModificarPiezas() {
-		conexion=new ConexionBBDD();
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ModificarPiezas.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
-		setTitle("Gesti\u00F3n Empresarial");
+		conexion=new ConexionBBDD();
+		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+		setSize(578,436);
+		setTitle("Genti\u00F3n Empresarial");
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 554, 376);
 		contentPane = new JPanel();
@@ -44,24 +76,25 @@ public class ModificarPiezas extends JFrame {
 		contentPane.setLayout(null);
 		setResizable(false);
 		
-		
+
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(ModificarPiezas.class.getResource("/principal/gemlogotransdefinitivo1.png")));
 		lblLogo.setBounds(164, 11, 237, 59);
 		contentPane.add(lblLogo);
-		
+
+
 		JTextPane txtpnIdPieza = new JTextPane();
-		txtpnIdPieza.setText("Nombre de la pieza a modificar");
+		txtpnIdPieza.setText("Id de la pieza a modificar");
 		txtpnIdPieza.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtpnIdPieza.setEditable(false);
 		txtpnIdPieza.setBackground(Color.GRAY);
 		txtpnIdPieza.setBounds(104, 81, 189, 20);
 		contentPane.add(txtpnIdPieza);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(292, 81, 86, 20);
-		contentPane.add(textField);
+		textId = new JTextField();
+		textId.setColumns(10);
+		textId.setBounds(292, 81, 86, 20);
+		contentPane.add(textId);
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(Color.DARK_GRAY);
@@ -116,9 +149,11 @@ public class ModificarPiezas extends JFrame {
 				try {
 					
 				
-				String consulta="update pieza set";
-				conexion.consultar("select nombre, precio, descripcion from pieza where nombre='"+textField.getText()+"'");
+				String consulta="update pieza set ";
+				conexion.consultar("select nombre, precio, descripcion from pieza where id_pieza='"+textId.getText()+"'");
 				String datos[][]=conexion.getDatos();
+				
+				System.out.println(Arrays.toString(datos[0]));
 				
 				if (!textNombre.getText().isEmpty()) {
 					consulta+= "nombre='" + textNombre.getText()+"',";
@@ -126,18 +161,18 @@ public class ModificarPiezas extends JFrame {
 					consulta+= "nombre='" +datos[0][0]+"',";
 				}
 				if (!textPrecio.getText().isEmpty()) {
-					consulta+= " apellidos='" + textPrecio.getText()+"',";
+					consulta+= "precio='" + textPrecio.getText()+"',";
 				}else {
-					consulta+= "apellidos='" +datos[0][1]+"',";
+					consulta+= "precio='" +datos[0][1]+"',";
 				}
 				if (!textDescripcion.getText().isEmpty()) {
-					consulta+= "contrasena='" + textDescripcion.getText()+"',";
+					consulta+= "descripcion='" + textDescripcion.getText()+"'";
 				}else {
-					consulta+= "contrasena='" +datos[0][2]+"',";
+					consulta+= "descripcion='" +datos[0][2]+"'";
 				}
 				
-				consulta+="where id_empleado ="+textNombre.getText();
-			
+				consulta+=" where id_pieza ="+textId.getText();
+			System.out.println(consulta);
 				ps = conexion.conectar().prepareStatement(consulta);
 					
 				ps.executeUpdate();
@@ -148,8 +183,9 @@ public class ModificarPiezas extends JFrame {
 						JOptionPane.INFORMATION_MESSAGE);
 					
 				} catch (SQLException e) {
+					System.out.println(e.getMessage());
 					JOptionPane.showMessageDialog(null, "\n"
-							+ "Datos erronesos, accion cancelada", "Usuario no modificado",
+							+ "Datos erroneos, acci�n cancelada", "Pieza no modificado",
 							JOptionPane.ERROR_MESSAGE);
 					dispose();
 				}

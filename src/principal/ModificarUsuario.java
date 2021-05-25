@@ -169,7 +169,6 @@ public class ModificarUsuario extends JFrame {
 						
 						ps.executeUpdate();
 						
-						
 						dispose();
 						JOptionPane.showMessageDialog(null, "\n"
 								+ "Usuario modificado con exito", "Usuario modificado",
@@ -184,7 +183,6 @@ public class ModificarUsuario extends JFrame {
 					
 				}
 		});
-		
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(292, 286, 138, 23);

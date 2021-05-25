@@ -100,9 +100,7 @@ public class Registro extends JFrame {
 						JOptionPane.showMessageDialog(null, "\n"
 								+ "Datos erronesos, accion cancelada", "Usuario no creado",
 								JOptionPane.ERROR_MESSAGE);
-						
 					}
-
 				}
 		});
 		
@@ -113,11 +111,9 @@ public class Registro extends JFrame {
 
 			public void actionPerformed(ActionEvent evt3) {
 				
-				dispose();
-				Login i = new Login();	
+				dispose();	
 			}
 		});
-		
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}

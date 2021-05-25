@@ -1,3 +1,4 @@
+
 package principal;
 
 import java.awt.Color;
@@ -9,15 +10,13 @@ import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollBar;
 
 public class Paneles {
 	private ConexionBBDD bD;
-	private JTable table;
+	private JPanel panel_2;
+
 	
 	/**
 	 * @wbp.parser.entryPoint
@@ -82,59 +81,70 @@ public class Paneles {
 		panel_2.setVisible(true);
 		return panel_2;
 	}
-	
-	
-public JPanel botonPiezas() {
+  
+  
+	public JPanel botonPiezas() {
 		
 
 		bD= new ConexionBBDD();
-		bD.consultar("select * from piezas");
-
+		bD.consultar("select * from pieza");
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.GRAY);
 		panel_2.setBounds(13, 59, 1000, 700);
 		panel_2.setLayout(null);
-		
-		System.out.println(Arrays.toString(bD.getColumnas()));
-		JTable tabla = new JTable(bD.getDatos(),bD.getColumnas());
+		JTable  tabla= new JTable(bD.getDatos(),bD.getColumnas()){
+	        private static final long serialVersionUID = 1L;
+
+	        public boolean isCellEditable(int row, int column) {                
+	                return false;               
+	        };
+		};
 		tabla.setBounds(0, 0, 1000, 557);
 		panel_2.add(tabla);
-		
-		JButton btnNuevo = new JButton("Nuevo");
-		btnNuevo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				RegistroPiezas rp = new RegistroPiezas();
-			}
-		});
-		btnNuevo.setBounds(356, 613, 89, 23);
-		panel_2.add(btnNuevo);
-		
-		JButton btnModificar = new JButton("Modificar");
-		btnModificar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ModificarPiezas mp = new ModificarPiezas();
-			}
-		});
-		btnModificar.setBounds(455, 613, 89, 23);
-		panel_2.add(btnModificar);
-		
-		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EliminarPiezas ep=new EliminarPiezas();
+	
+        JButton btnNuevaPieza = new JButton("Nueva pieza");
+        btnNuevaPieza.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+            	RegistroPiezas rp=new RegistroPiezas();
+            	rp.setVisible(true);
+            }
+        });
+        btnNuevaPieza.setBounds(190, 613, 114, 23);
+        panel_2.add(btnNuevaPieza);
+
+        JButton btnModificarPieza = new JButton("Modificar pieza");
+        btnModificarPieza.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+            	ModificarPiezas mp=new ModificarPiezas();
+            	mp.setVisible(true);
+            }
+        });
+        btnModificarPieza.setBounds(437, 613, 120, 23);
+        panel_2.add(btnModificarPieza);
+
+        JButton btnEliminarPieza = new JButton("Eliminar pieza");
+        btnEliminarPieza.setBounds(686, 613, 114, 23);
+        panel_2.add(btnEliminarPieza);
+        btnEliminarPieza.addActionListener(new ActionListener() {
+        	
+			public void actionPerformed(ActionEvent arg0) {
 				
+				EliminarPiezas ep=new EliminarPiezas();
+				ep.setVisible(true);
 			}
-		});
-		btnEliminar.setBounds(554, 613, 89, 23);
-		panel_2.add(btnEliminar);
+        	
+        });
+		
 		panel_2.setVisible(true);
+		
 		return panel_2;
 	}
-	
-	
-	
-	public JPanel produccion() {
+  
+  
+		public JPanel produccion() {
 		
 
 		bD= new ConexionBBDD();

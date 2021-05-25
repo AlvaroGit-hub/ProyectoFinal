@@ -63,7 +63,7 @@ public class EliminarPiezas extends JFrame {
 		txtNombrePieza.setEditable(false);
 		txtNombrePieza.setBackground(Color.GRAY);
 		txtNombrePieza.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtNombrePieza.setText("Nombre de la pieza a eliminar");
+		txtNombrePieza.setText("Id de la pieza a eliminar");
 		txtNombrePieza.setBounds(105, 170, 184, 20);
 		contentPane.add(txtNombrePieza);
 		
@@ -74,23 +74,23 @@ public class EliminarPiezas extends JFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar al usuario?", "Alerta!", JOptionPane.YES_NO_OPTION);
+					int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar la pieza?", "Alerta!", JOptionPane.YES_NO_OPTION);
 					
 					if (resp==0) {
-						ps = conexion.conectar().prepareStatement("delete from empleado where id_empleado = ?");
+						ps = conexion.conectar().prepareStatement("delete from pieza where id_pieza = ?");
 						
 						ps.setInt(1, Integer.parseInt(textNombre.getText()));
 						
 						ps.executeUpdate();
 						dispose();
 						JOptionPane.showMessageDialog(null, "\n"
-								+ "Usuario eliminado exito", "Usuario modificado",
+								+ "Pieza eliminada exito", "Pieza modificada",
 								JOptionPane.INFORMATION_MESSAGE);
 						
 					}else {
 						dispose();
 						JOptionPane.showMessageDialog(null, "\n"
-								+ "Accion cancelada", "Usuario no eliminado",
+								+ "Accion cancelada", "Pieza no eliminada",
 								JOptionPane.ERROR_MESSAGE);
 					}
 
