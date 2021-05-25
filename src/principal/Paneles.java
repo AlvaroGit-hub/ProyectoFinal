@@ -39,7 +39,13 @@ public class Paneles {
 		panel_2.add(scrollBar);
 		
 
-		JTable tabla = new JTable(bD.getDatos(),bD.getColumnas());
+		JTable tabla = new JTable(bD.getDatos(),bD.getColumnas()){
+            private static final long serialVersionUID = 1L;
+
+            public boolean isCellEditable(int row, int column) {
+                    return false;
+            };
+        };
 		tabla.setBounds(0, 0, 1000, 557);
 
 		panel_2.add(tabla);
@@ -76,6 +82,8 @@ public class Paneles {
 		panel_2.setVisible(true);
 		return panel_2;
 	}
+	
+	
 public JPanel botonPiezas() {
 		
 
@@ -135,26 +143,41 @@ public JPanel botonPiezas() {
 		panel_2.setBackground(Color.GRAY);
 		panel_2.setBounds(13, 59, 1000, 700);
 		panel_2.setLayout(null);
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(973, 71, 17, 603);
-		panel_2.add(scrollBar);
 
-		
+		JPanel tablas = new JPanel();
+		tablas.setBounds(0, 45, 1000, 655);
+		panel_2.add(tablas);
+		tablas.setLayout(null);
 
-		
+		JTextField textTrabajador = new JTextField();
+		textTrabajador.setBounds(643, 12, 108, 23);
+		panel_2.add(textTrabajador);
+		textTrabajador.setColumns(10);
 		
 		JButton btnDiaria = new JButton("Diaria");
 		btnDiaria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				bD.consultar("select pieza.id_pieza, pieza.nombre, descripcion, sum(cantidad_realizada) as cantidad from tarea inner join pieza where pieza.id_pieza = tarea.id_pieza group by pieza.id_pieza");
+				bD.consultar("select tarea.id_pieza, pieza.nombre, pieza.descripcion, sum(tarea.cantidad_realizada) from tarea left join pieza on tarea.id_pieza = pieza.id_pieza left join realizar on tarea.id_tarea = realizar.id_tarea where datediff(curdate(),f_final) < 1 group by tarea.id_pieza");
 				
-				JTable tabla = new JTable(bD.getDatos(),bD.getColumnas());
-				tabla.setBackground(Color.WHITE);
-				tabla.setBounds(10, 71, 980, 603);
-				panel_2.add(tabla);
-				panel_2.repaint();
-				panel_2.revalidate();
+				tablas.removeAll();
+				
+				table = new JTable(bD.getDatos(),bD.getColumnas()){
+		            private static final long serialVersionUID = 1L;
+
+		            public boolean isCellEditable(int row, int column) {
+		                    return false;
+		            };
+		        };
+				table.setBackground(Color.WHITE);
+				table.setBounds(10, 71, 980, 603);
+				table.repaint();
+				table.revalidate();
+				
+
+
+				tablas.add(table);
+				tablas.repaint();
+				tablas.revalidate();
 			}
 		});
 		btnDiaria.setBounds(228, 11, 89, 23);
@@ -163,14 +186,25 @@ public JPanel botonPiezas() {
 		JButton btnMensual = new JButton("Mensual");
 		btnMensual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				bD.consultar("select pieza.id_pieza, pieza.nombre, descripcion, sum(tarea.cantidad_realizada) as cantidad from tarea inner join pieza inner join realizar where pieza.id_pieza = tarea.id_pieza and datediff(curdate(),f_final) < 31 group by pieza.id_pieza");
+				bD.consultar("select tarea.id_pieza, pieza.nombre, pieza.descripcion, sum(tarea.cantidad_realizada) from tarea left join pieza on tarea.id_pieza = pieza.id_pieza left join realizar on tarea.id_tarea = realizar.id_tarea where datediff(curdate(),f_final) < 30 group by tarea.id_pieza");
 				
-				JTable tabla = new JTable(bD.getDatos(),bD.getColumnas());
-				tabla.setBackground(Color.WHITE);
-				tabla.setBounds(10, 71, 980, 603);
-				panel_2.add(tabla);
-				panel_2.repaint();
-				panel_2.revalidate();
+				tablas.removeAll();
+				
+				table = new JTable(bD.getDatos(),bD.getColumnas()){
+		            private static final long serialVersionUID = 1L;
+
+		            public boolean isCellEditable(int row, int column) {
+		                    return false;
+		            };
+		        };
+				table.setBackground(Color.WHITE);
+				table.setBounds(10, 71, 980, 603);
+				table.repaint();
+				
+				tablas.add(table);
+				tablas.repaint();
+				tablas.revalidate();
+				
 			}
 		});
 		btnMensual.setBounds(327, 11, 89, 23);
@@ -179,14 +213,24 @@ public JPanel botonPiezas() {
 		JButton btnAnual = new JButton("Anual");
 		btnAnual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				bD.consultar("select pieza.id_pieza, pieza.nombre, descripcion, sum(tarea.cantidad_realizada) as cantidad from tarea inner join pieza inner join realizar where pieza.id_pieza = tarea.id_pieza and datediff(curdate(),f_final) < 365 group by pieza.id_pieza");
+				bD.consultar("select tarea.id_pieza, pieza.nombre, pieza.descripcion, sum(tarea.cantidad_realizada) from tarea left join pieza on tarea.id_pieza = pieza.id_pieza left join realizar on tarea.id_tarea = realizar.id_tarea where datediff(curdate(),f_final) < 365 group by tarea.id_pieza");
 				
-				JTable tabla = new JTable(bD.getDatos(),bD.getColumnas());
-				tabla.setBackground(Color.WHITE);
-				tabla.setBounds(10, 71, 980, 603);
-				panel_2.add(tabla);
-				panel_2.repaint();
-				panel_2.revalidate();
+				tablas.removeAll();
+				
+				table = new JTable(bD.getDatos(),bD.getColumnas()){
+		            private static final long serialVersionUID = 1L;
+
+		            public boolean isCellEditable(int row, int column) {
+		                    return false;
+		            };
+		        };
+				table.setBackground(Color.WHITE);
+				table.setBounds(10, 71, 980, 603);
+				table.repaint();
+				
+				tablas.add(table);
+				tablas.repaint();
+				tablas.revalidate();
 				
 			}
 		});
@@ -194,19 +238,43 @@ public JPanel botonPiezas() {
 		panel_2.add(btnAnual);
 		
 		JButton btnTrabajador = new JButton("Por trabajador");
+		btnTrabajador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String id="";
+				if (textTrabajador.getText().isEmpty()) {
+					id="0";
+				}else {
+					id=textTrabajador.getText();
+				}
+				bD.consultar("select tarea.id_pieza, pieza.nombre, pieza.descripcion, sum(tarea.cantidad_realizada) from tarea left join pieza on tarea.id_pieza = pieza.id_pieza left join realizar on tarea.id_tarea = realizar.id_tarea where realizar.id_empleado = " + id +" group by tarea.id_pieza");
+				
+				tablas.removeAll();
+				
+				table = new JTable(bD.getDatos(),bD.getColumnas()){
+		            private static final long serialVersionUID = 1L;
+
+		            public boolean isCellEditable(int row, int column) {
+		                    return false;
+		            };
+		        };
+				table.setBackground(Color.WHITE);
+				table.setBounds(10, 71, 980, 603);
+				table.repaint();
+				
+				tablas.add(table);
+				tablas.repaint();
+				tablas.revalidate();
+			}
+		});
 		btnTrabajador.setBounds(525, 11, 108, 23);
 		panel_2.add(btnTrabajador);
 		
-		JTextField textTrabajador = new JTextField();
-		textTrabajador.setBounds(643, 12, 108, 23);
-		panel_2.add(textTrabajador);
-		textTrabajador.setColumns(10);
+	
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(983, 0, 17, 644);
+		tablas.add(scrollBar);
 		
-
 		
-
-		
-
 		panel_2.setVisible(true);
 		return panel_2;
 	}
