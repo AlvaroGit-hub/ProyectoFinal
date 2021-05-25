@@ -13,12 +13,13 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.JScrollBar;
 
 public class Paneles {
 	private ConexionBBDD bD;
-	private JTable table;
-	
+	private JTable table=null;
+	private JTextField textField;
 	/**
 	 * @wbp.parser.entryPoint
 	 */
