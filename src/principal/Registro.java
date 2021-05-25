@@ -88,7 +88,7 @@ public class Registro extends JFrame {
 				
 				public void actionPerformed(ActionEvent evt2) {
 					int respuesta = conexion.nuevoUsuario(txtNombre.getText(),txtApellidos.getText(),contrasena.getText(),String.valueOf(cBCategoria.getSelectedItem()));
-						
+					
 					if (respuesta==1) {
 						dispose();
 						JOptionPane.showMessageDialog(null, "\n"
