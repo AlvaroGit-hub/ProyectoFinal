@@ -105,10 +105,18 @@ public class Menu extends JFrame{
 		btnTareasRealizadas_1.setMargin(new Insets(14, 14, 14, 14));
 		menuBar.add(btnTareasRealizadas_1);
 		
-		JButton btnProduccionUsuario_1 = new JButton("Producci\u00F3n usuario");
-		btnProduccionUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnProduccionUsuario_1.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnProduccionUsuario_1);
+		JButton btnProduccion = new JButton("Producci\u00F3n");
+		btnProduccion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		        contenido.removeAll();
+				contenido.add(paneles.produccion());
+				contenido.repaint();
+				contenido.revalidate();
+			}
+		});
+		btnProduccion.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnProduccion.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnProduccion);
 		
 		JButton btnJornadaUsuario_1 = new JButton("Jornada usuario");
 		btnJornadaUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
