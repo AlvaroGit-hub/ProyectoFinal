@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
@@ -80,7 +81,21 @@ public class RegistroPiezas extends JFrame {
 		btnRegistro.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				conexion.nuevaPieza(textNombre.getName(),Float.parseFloat(textPrecio.getText()),textDescripcion.getText());
+				int respuesta = conexion.nuevaPieza(textNombre.getText(),Float.parseFloat(textPrecio.getText()),textDescripcion.getText());
+				
+				
+				if (respuesta==1) {
+					dispose();
+					JOptionPane.showMessageDialog(null, "\n"
+							+ "Nuevo pieza creada con exito", "Pieza creada",
+							JOptionPane.INFORMATION_MESSAGE);
+					
+				}else {
+					dispose();
+					JOptionPane.showMessageDialog(null, "\n"
+							+ "Datos erroneos, accion cancelada", "Pieza no creada",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		
@@ -91,9 +106,7 @@ public class RegistroPiezas extends JFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-
-				Menu m=new Menu();
-				
+	
 			}
 		});		
 		setVisible(true);

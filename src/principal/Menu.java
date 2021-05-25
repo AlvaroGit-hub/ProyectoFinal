@@ -34,8 +34,7 @@ public class Menu extends JFrame{
 	public Menu(Empleado empleado) {
 		
 		paneles=new Paneles();
-		
-		
+
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Usuario\\git\\ProyectoFinal\\src\\principal\\gemlogotransdefinitivo1.png"));
 		setTitle("Gesti\u00F3n Empresarial");
 		this.setResizable(false);
@@ -54,85 +53,6 @@ public class Menu extends JFrame{
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-
-		
-	
-//		JPanel panel_1 = new JPanel();
-//		panel_1.setBackground(Color.GRAY);
-//		panel_1.setBounds(13, 59, 587, 235);
-//		panel.add(panel_1);
-//		panel_1.setLayout(new GridLayout(0, 2, 10, 5));
-//		
-//		JButton btnInformacionUsuario = new JButton("Informaci\u00F3n usuario");
-//		panel_1.add(btnInformacionUsuario);
-//		btnInformacionUsuario.addActionListener(new ActionListener() {
-//
-//			public void actionPerformed(ActionEvent evt) {
-//				dispose();
-//				
-//			}
-//			
-//		});
-//		
-//		JButton btnInformacionStock = new JButton("Informaci\u00F3n stock");
-//		panel_1.add(btnInformacionStock);
-//		btnInformacionStock.addActionListener(new ActionListener() {
-//
-//			public void actionPerformed(ActionEvent evt) {
-//				dispose();
-//				
-//			}
-//			
-//		});
-//		
-//		JButton btnInformacionProduccion = new JButton("Informaci\u00F3n producci\u00F3n");
-//		btnInformacionProduccion.addActionListener(new ActionListener() {
-//			
-//			public void actionPerformed(ActionEvent arg0) {
-//				 contenido.removeAll();
-//				 contenido.add(paneles.botonPiezas());
-//				 contenido.repaint();
-//				 contenido.revalidate();
-//				
-//			}
-//		});
-//		panel_1.add(btnInformacionProduccion);
-//		
-//		JButton btnInformacionTareas = new JButton("Informaci\u00F3n tareas");
-//		panel_1.add(btnInformacionTareas);
-//		btnInformacionTareas.addActionListener(new ActionListener() {
-//			
-//			public void actionPerformed(ActionEvent arg0) {
-//				contenido.removeAll();
-//				contenido.add(paneles.botonTareas();
-//				contenido.repaint();
-//				contenido.revalidate();
-//				
-//			}
-//		});
-//		
-//		JButton btnRegistrarUsuario = new JButton("Registrar nuevo usuario");
-//		panel_1.add(btnRegistrarUsuario);
-//		btnRegistrarUsuario.addActionListener(new ActionListener() {
-//			
-//			public void actionPerformed(ActionEvent arg0) {
-//				dispose();
-//				
-//			}
-//		});
-//		
-//		JButton btnAsignarTarea = new JButton("Asignar nueva tarea");
-//		panel_1.add(btnAsignarTarea);
-//		btnAsignarTarea.addActionListener(new ActionListener() {
-//
-//			public void actionPerformed(ActionEvent arg0) {
-//				dispose();
-//				
-//			}
-//			
-//		});
-		
-
 		JLabel lblUser = new JLabel("Usuario :");
 		lblUser.setBounds(397, 43, 75, 14);
 		panel.add(lblUser);
@@ -171,10 +91,10 @@ public class Menu extends JFrame{
 		btnEmpelados.addActionListener(new ActionListener() {
 			
 				public void actionPerformed(ActionEvent evt) {
-//					contenido.removeAll();
-//					contenido.add(paneles.botonEmpleados());
-//					contenido.repaint();
-//					contenido.revalidate();
+					contenido.removeAll();
+					contenido.add(paneles.botonEmpleados());
+					contenido.repaint();
+					contenido.revalidate();
 				}		
 		});
 		
@@ -209,30 +129,6 @@ public class Menu extends JFrame{
 			
 		});
 		
-//		JButton btnJornadaUsuario_1 = new JButton("Jornada usuario");
-//		btnJornadaUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-//		btnJornadaUsuario_1.setMargin(new Insets(14, 14, 14, 14));
-//		menuBar.add(btnJornadaUsuario_1);
-		
-
-//		JButton btnNewButton_2 = new JButton("New button");
-//		btnNewButton_2.setMargin(new Insets(14, 14, 14, 14));
-//		menuBar.add(btnNewButton_2);
-
-		JButton btnMostrarPiezas = new JButton("Mostrar Piezas");
-		btnMostrarPiezas.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnMostrarPiezas);
-		btnMostrarPiezas.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				 contenido.removeAll();
-					contenido.add(paneles.botonPiezas());
-					contenido.repaint();
-					contenido.revalidate();
-					}
-		});
-
-		
 		JButton btnAdministrarCuenta_1 = new JButton("Administrar cuenta");
 		btnAdministrarCuenta_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnAdministrarCuenta_1.setMargin(new Insets(14, 14, 14, 14));
@@ -254,14 +150,10 @@ public class Menu extends JFrame{
 
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Login i=new Login();
 			}
 		});
 		
 		setVisible(true);
-		
-	}
-	public Menu() {
 		
 	}
 }

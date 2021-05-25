@@ -137,13 +137,19 @@ public class ConexionBBDD {
     
     
     
-	public void fichar(int id_usuario) {
+	public int fichar(int id_usuario) {
+		int respuesta=0;
 		try {
 			
 			cls = conectar().prepareCall("{call insertar_fichaje(?)}");
+			if (id_usuario==0.0) {
+				respuesta=0;
+			}
+			else {
 			cls.setInt(1, id_usuario);
 			cls.executeUpdate();
-			
+			respuesta=1;
+			}
 		}catch(Exception e) {
 			e.getMessage();
 		}finally {
@@ -159,15 +165,23 @@ public class ConexionBBDD {
 				e.printStackTrace();
 			}
 		}
+		return respuesta;
 	}
 
-	public void nuevaPieza(String nombrePieza,float precio,String descripcion) {
+	public int nuevaPieza(String nombre,float precio,String descripcion) {
+		int respuesta=0;
+			
 		try {
 			cls = conectar().prepareCall("{call nueva_pieza(?,?,?)}");
-			cls.setString(1, nombrePieza);
+			if (nombre.isEmpty() || precio==0.0 || descripcion.isEmpty()) {
+				respuesta=0;
+			}else {
+			cls.setString(1, nombre);
 			cls.setFloat(2, precio);
 			cls.setString(3, descripcion);
 			cls.executeUpdate();
+			respuesta=1;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -183,6 +197,7 @@ public class ConexionBBDD {
 				e.printStackTrace();
 			}
 		}
+		return respuesta;
 	}
 
 	public int nuevoUsuario(String nombre,String apellidos,String contrasena,String categoria) {

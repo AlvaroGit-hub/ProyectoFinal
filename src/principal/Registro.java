@@ -111,8 +111,7 @@ public class Registro extends JFrame {
 
 			public void actionPerformed(ActionEvent evt3) {
 				
-				dispose();
-				Login i = new Login();	
+				dispose();	
 			}
 		});
 		setLocationRelativeTo(null);

@@ -20,24 +20,31 @@ public class Paneles {
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-//	public JPanel botonEmpleados() {
-//		
-//
-//		bD= new ConexionBBDD();
-//		bD.consultar("select * from empleado");
-//
-//		JPanel panel_2 = new JPanel();
-//		panel_2.setBackground(Color.GRAY);
-//		panel_2.setBounds(13, 59, 1000, 700);
-//		panel_2.setLayout(null);
-//		
-//		JTable tabla = new JTable(bD.getDatos(),bD.getColumnas());
-//		tabla.setBounds(0, 0, 1000, 557);
-//		panel_2.add(tabla);
-//
-//		panel_2.setVisible(true);
-//		return panel_2;
-//	}
+	public JPanel botonEmpleados() {
+		
+
+		bD= new ConexionBBDD();
+		bD.consultar("select * from empleado");
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.GRAY);
+		panel_2.setBounds(13, 59, 1000, 700);
+		panel_2.setLayout(null);
+		
+		JTable tabla = new JTable(bD.getDatos(),bD.getColumnas()){
+	        private static final long serialVersionUID = 1L;
+
+	        public boolean isCellEditable(int row, int column) {                
+	                return false;               
+	        };
+		};
+		tabla.setBounds(0, 0, 1000, 557);
+		panel_2.add(tabla);
+		  
+
+		panel_2.setVisible(true);
+		return panel_2;
+	}
 	public JPanel botonPiezas() {
 		
 
@@ -48,7 +55,13 @@ public class Paneles {
 		panel_2.setBackground(Color.GRAY);
 		panel_2.setBounds(13, 59, 1000, 700);
 		panel_2.setLayout(null);
-		JTable  tabla= new JTable(bD.getDatos(),bD.getColumnas());
+		JTable  tabla= new JTable(bD.getDatos(),bD.getColumnas()){
+	        private static final long serialVersionUID = 1L;
+
+	        public boolean isCellEditable(int row, int column) {                
+	                return false;               
+	        };
+		};
 		tabla.setBounds(0, 0, 1000, 557);
 		panel_2.add(tabla);
 	
@@ -67,7 +80,8 @@ public class Paneles {
         btnModificarPieza.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
-            	
+            	ModificarPiezas mp=new ModificarPiezas();
+            	mp.setVisible(true);
             }
         });
         btnModificarPieza.setBounds(437, 613, 120, 23);
@@ -80,6 +94,8 @@ public class Paneles {
         	
 			public void actionPerformed(ActionEvent arg0) {
 				
+				EliminarPiezas ep=new EliminarPiezas();
+				ep.setVisible(true);
 			}
         	
         });
@@ -101,7 +117,13 @@ public class Paneles {
 		panel_2.setLayout(null);
 		
 
-		JTable produccion = new JTable(bD.getDatos(),bD.getColumnas());
+		JTable produccion = new JTable(bD.getDatos(),bD.getColumnas()){
+	        private static final long serialVersionUID = 1L;
+
+	        public boolean isCellEditable(int row, int column) {                
+	                return false;               
+	        };
+		};
 		produccion.setBounds(0, 0, 1000, 700);
 		panel_2.add(produccion);
 		panel_2.setVisible(true);
@@ -163,52 +185,5 @@ public class Paneles {
 		panel_2.setVisible(true);
 		return panel_2;
 	}
-//public JPanel botonPiezas() {
-//		
-//
-//		bD= new ConexionBBDD();
-//		bD.consultar("select * from piezas");
-//
-//		
-//
-//		JPanel panel_2 = new JPanel();
-//		panel_2.setBackground(Color.GRAY);
-//		panel_2.setBounds(13, 59, 1000, 700);
-//		panel_2.setLayout(null);
-//		
-//		System.out.println(Arrays.toString(bD.getColumnas()));
-//		JTable tabla = new JTable(bD.getDatos(),bD.getColumnas());
-//		tabla.setBounds(0, 0, 1000, 557);
-//		panel_2.add(tabla);
-//		
-//		JButton btnNuevo = new JButton("Nuevo");
-//		btnNuevo.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				RegistroPiezas rp = new RegistroPiezas();
-//			}
-//		});
-//		btnNuevo.setBounds(356, 613, 89, 23);
-//		panel_2.add(btnNuevo);
-//		
-//		JButton btnModificar = new JButton("Modificar");
-//		btnModificar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				ModificarPiezas mp = new ModificarPiezas();
-//			}
-//		});
-//		btnModificar.setBounds(455, 613, 89, 23);
-//		panel_2.add(btnModificar);
-//		
-//		JButton btnEliminar = new JButton("Eliminar");
-//		btnEliminar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				EliminarPiezas ep=new EliminarPiezas();
-//				
-//			}
-//		});
-//		btnEliminar.setBounds(554, 613, 89, 23);
-//		panel_2.add(btnEliminar);
-//		panel_2.setVisible(true);
-//		return panel_2;
-//	}
+
 }
