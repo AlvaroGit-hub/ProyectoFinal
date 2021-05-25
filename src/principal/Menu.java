@@ -115,23 +115,21 @@ public class Menu extends JFrame{
 			
 		});
 		
-		JButton btnProduccionUsuario_1 = new JButton("Producci\u00F3n usuario");
-		btnProduccionUsuario_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnProduccionUsuario_1.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnProduccionUsuario_1);
-		btnProduccionUsuario_1.addActionListener(new ActionListener() {
+		JButton btnProduccion= new JButton("Producci\u00F3n usuario");
+		btnProduccion.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnProduccion.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnProduccion);
+		btnProduccion.addActionListener(new ActionListener() {
 			
 				public void actionPerformed(ActionEvent evt) {
 					contenido.removeAll();
-					contenido.add(paneles.botonProduccionUsuario(empleado.getIdEmpleado()));
+					contenido.add(paneles.produccion());
 					contenido.repaint();
 					contenido.revalidate();
 				}
 			
 		});
-		btnProduccion.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnProduccion.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnProduccion);
+		
 		
 		JButton btnAdministrarCuenta_1 = new JButton("Administrar cuenta");
 		btnAdministrarCuenta_1.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -9,7 +9,9 @@ import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
 
@@ -144,7 +146,7 @@ public class Paneles {
 	}
   
   
-		public JPanel produccion() {
+	public JPanel produccion() {
 		
 
 		bD= new ConexionBBDD();
@@ -171,7 +173,7 @@ public class Paneles {
 				
 				tablas.removeAll();
 				
-				table = new JTable(bD.getDatos(),bD.getColumnas()){
+				JTable table = new JTable(bD.getDatos(),bD.getColumnas()){
 		            private static final long serialVersionUID = 1L;
 
 		            public boolean isCellEditable(int row, int column) {
@@ -200,7 +202,7 @@ public class Paneles {
 				
 				tablas.removeAll();
 				
-				table = new JTable(bD.getDatos(),bD.getColumnas()){
+				JTable table = new JTable(bD.getDatos(),bD.getColumnas()){
 		            private static final long serialVersionUID = 1L;
 
 		            public boolean isCellEditable(int row, int column) {
@@ -227,7 +229,7 @@ public class Paneles {
 				
 				tablas.removeAll();
 				
-				table = new JTable(bD.getDatos(),bD.getColumnas()){
+				JTable table = new JTable(bD.getDatos(),bD.getColumnas()){
 		            private static final long serialVersionUID = 1L;
 
 		            public boolean isCellEditable(int row, int column) {
@@ -260,7 +262,7 @@ public class Paneles {
 				
 				tablas.removeAll();
 				
-				table = new JTable(bD.getDatos(),bD.getColumnas()){
+				JTable table = new JTable(bD.getDatos(),bD.getColumnas()){
 		            private static final long serialVersionUID = 1L;
 
 		            public boolean isCellEditable(int row, int column) {
