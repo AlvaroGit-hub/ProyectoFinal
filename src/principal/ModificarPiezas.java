@@ -1,3 +1,4 @@
+
 package principal;
 
 import java.awt.BorderLayout;
@@ -184,7 +185,7 @@ public class ModificarPiezas extends JFrame {
 				} catch (SQLException e) {
 					System.out.println(e.getMessage());
 					JOptionPane.showMessageDialog(null, "\n"
-							+ "Datos erroneos, acción cancelada", "Usuario no modificado",
+							+ "Datos erroneos, acciï¿½n cancelada", "Pieza no modificado",
 							JOptionPane.ERROR_MESSAGE);
 					dispose();
 				}
@@ -209,4 +210,3 @@ public class ModificarPiezas extends JFrame {
 		
 	}
 }
-

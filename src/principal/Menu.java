@@ -90,6 +90,7 @@ public class Menu extends JFrame{
 		menuBar.add(btnEmpelados);
 		btnEmpelados.addActionListener(new ActionListener() {
 			
+
 				public void actionPerformed(ActionEvent evt) {
 					contenido.removeAll();
 					contenido.add(paneles.botonEmpleados());
@@ -128,24 +129,20 @@ public class Menu extends JFrame{
 				}
 			
 		});
+		btnProduccion.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnProduccion.setMargin(new Insets(14, 14, 14, 14));
+		menuBar.add(btnProduccion);
 		
 		JButton btnAdministrarCuenta_1 = new JButton("Administrar cuenta");
 		btnAdministrarCuenta_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnAdministrarCuenta_1.setMargin(new Insets(14, 14, 14, 14));
 		menuBar.add(btnAdministrarCuenta_1);
-		btnAdministrarCuenta_1.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
-			}
-		});
 		
 		JButton btnSalir_1 = new JButton("Salir");
 		btnSalir_1.setMargin(new Insets(14, 14, 14, 14));
 		btnSalir_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		menuBar.add(btnSalir_1);
+
 		btnSalir_1.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {

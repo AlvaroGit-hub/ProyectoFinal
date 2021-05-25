@@ -1,3 +1,4 @@
+
 package principal;
 
 import java.awt.BorderLayout;
@@ -113,3 +114,4 @@ public class RegistroPiezas extends JFrame {
 
 	}
 }
+
