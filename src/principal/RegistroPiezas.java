@@ -95,13 +95,7 @@ public class RegistroPiezas extends JFrame {
 				Menu m=new Menu();
 				
 			}
-		});
-
-				Menu m=new Menu(null);
-				
-			}
-		});
-		
+		});		
 		setVisible(true);
 
 	}

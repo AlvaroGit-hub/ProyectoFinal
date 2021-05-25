@@ -11,7 +11,8 @@ public class Principal {
 		//Login i = new Login();
 		//Menu m=new Menu();
 		//RegistroPiezas rp=new RegistroPiezas();
-		EliminarPiezas ep=new EliminarPiezas();
+		//EliminarPiezas ep=new EliminarPiezas();
+		ModificarPiezas mp=new ModificarPiezas();
 	}
 
 }

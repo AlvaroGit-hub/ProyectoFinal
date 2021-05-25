@@ -54,7 +54,6 @@ public class ModificarPiezas extends JFrame {
 	private JPanel contentPane;
 	private ConexionBBDD conexion;
 	private JTextField textField;
-	private ConexionBBDD conexion;
 	private PreparedStatement ps;
 	private ResultSet rs;
 
@@ -80,12 +79,7 @@ public class ModificarPiezas extends JFrame {
 		lblLogo.setIcon(new ImageIcon(ModificarPiezas.class.getResource("/principal/gemlogotransdefinitivo1.png")));
 		lblLogo.setBounds(164, 11, 237, 59);
 		contentPane.add(lblLogo);
-		
 
-		
-		
-}
-}
 
 		JTextPane txtpnIdPieza = new JTextPane();
 		txtpnIdPieza.setText("Nombre de la pieza a modificar");
