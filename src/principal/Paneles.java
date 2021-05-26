@@ -10,10 +10,12 @@ import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 public class Paneles {
 	private ConexionBBDD bD;
@@ -35,21 +37,26 @@ public class Paneles {
 		panel_2.setBounds(13, 59, 1000, 700);
 		panel_2.setLayout(null);
 		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(983, 0, 17, 557);
-		panel_2.add(scrollBar);
-		
 
-		JTable tabla = new JTable(bD.getDatos(),bD.getColumnas()){
+		
+		
+		DefaultTableModel ss = new DefaultTableModel(bD.getDatos(),bD.getColumnas());
+		
+		JTable tabla = new JTable() {
+
             private static final long serialVersionUID = 1L;
 
             public boolean isCellEditable(int row, int column) {
                     return false;
             };
         };
+        
 		tabla.setBounds(0, 0, 1000, 557);
 
-		panel_2.add(tabla);
+		JScrollPane scrollBar = new JScrollPane(tabla);
+		scrollBar.setBounds(0, 0, 1000, 557);
+		panel_2.add(scrollBar);
+		tabla.setModel(ss);
 		
 		JButton btnNuevo = new JButton("Nuevo");
 		btnNuevo.addActionListener(new ActionListener() {
