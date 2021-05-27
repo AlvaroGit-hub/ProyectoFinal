@@ -19,6 +19,8 @@ import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.Component;
+import java.awt.Dimension;
+
 import javax.swing.JMenuBar;
 import java.awt.Insets;
 import javax.swing.JComboBox;
@@ -35,12 +37,14 @@ public class Menu extends JFrame{
 		
 		paneles=new Paneles();
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Usuario\\git\\ProyectoFinal\\src\\principal\\gemlogotransdefinitivo1.png"));
+		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+		setSize(pantalla.width/2,pantalla.height/2);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
 		setTitle("Gesti\u00F3n Empresarial");
 		this.setResizable(false);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1080, 960);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 1061, 920);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -64,8 +68,8 @@ public class Menu extends JFrame{
 		lblLogo.setIcon(new ImageIcon(Menu.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
 		
 		JLabel lblNombreUsuario = new JLabel(empleado.getNombre());
-		lblNombreUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNombreUsuario.setBounds(481, 43, 75, 14);
+		lblNombreUsuario.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNombreUsuario.setBounds(484, 36, 75, 31);
 		panel.add(lblNombreUsuario);
 	
 		
@@ -81,7 +85,7 @@ public class Menu extends JFrame{
 		menuBar.setAlignmentY(Component.CENTER_ALIGNMENT);
 		menuBar.setBackground(Color.GRAY);
 		menuBar.setForeground(Color.GRAY);
-		menuBar.setBounds(218, 83, 732, 30);
+		menuBar.setBounds(258, 78, 732, 30);
 		panel.add(menuBar);
 		
 		JButton btnEmpelados = new JButton("Mostrar Empleados");
@@ -99,7 +103,7 @@ public class Menu extends JFrame{
 				}		
 		});
 		
-		JButton btnPiezas = new JButton("Mostrar piezas");
+		JButton btnPiezas = new JButton("  Mostrar piezas  ");
 		btnPiezas.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnPiezas.setMargin(new Insets(14, 14, 14, 14));
 		menuBar.add(btnPiezas);
@@ -130,12 +134,6 @@ public class Menu extends JFrame{
 			
 		});
 		
-		
-		JButton btnAdministrarCuenta_1 = new JButton("Administrar cuenta");
-		btnAdministrarCuenta_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnAdministrarCuenta_1.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnAdministrarCuenta_1);
-		
 		JButton btnSalir_1 = new JButton("Salir");
 		btnSalir_1.setMargin(new Insets(14, 14, 14, 14));
 		btnSalir_1.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -149,6 +147,7 @@ public class Menu extends JFrame{
 		});
 		
 		setVisible(true);
+		setLocationRelativeTo(null);
 		
 	}
 }

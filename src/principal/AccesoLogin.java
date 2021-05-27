@@ -27,6 +27,7 @@ public class AccesoLogin extends JFrame {
 
 	public AccesoLogin() {
 		
+		setResizable(false);
 		conexion=new ConexionBBDD();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AccesoLogin.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
 		setTitle("Gesti\u00F3n Empresarial");
@@ -169,7 +170,7 @@ public class AccesoLogin extends JFrame {
 		contentPane.add(lblLogo);
 		
 		JButton btnFichar = new JButton("Fichar");
-		btnFichar.setBounds(51, 320, 89, 23);
+		btnFichar.setBounds(40, 320, 151, 23);
 		contentPane.add(btnFichar);
 		btnFichar.addActionListener(new ActionListener() {
 

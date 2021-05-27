@@ -27,7 +27,7 @@ public class Login extends JFrame {
 		setSize(pantalla.width/2,pantalla.height/2);
 	    		
 	    
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		ventanaLogin = new JPanel();
 		

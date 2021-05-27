@@ -34,7 +34,7 @@ public class RegistroPiezas extends JFrame {
 
 		conexion=new ConexionBBDD();
 		setTitle("Gesti\u00F3n Empresarial");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 473, 334);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.GRAY);
@@ -82,7 +82,7 @@ public class RegistroPiezas extends JFrame {
 		btnRegistro.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				int respuesta = conexion.nuevaPieza(textNombre.getText(),Float.parseFloat(textPrecio.getText()),textDescripcion.getText());
+				int respuesta = conexion.nuevaPieza(textNombre.getText(),Float.parseFloat(textPrecio.getText().replace(",",".")),textDescripcion.getText());
 				
 				
 				if (respuesta==1) {

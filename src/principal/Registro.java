@@ -25,7 +25,7 @@ public class Registro extends JFrame {
 		setSize(pantalla.width/2,pantalla.height/2);
 		setTitle("Genti\u00F3n Empresarial");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Registro.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 554, 376);
 		ventanaNuevoUser = new JPanel();
 		setResizable(false);
