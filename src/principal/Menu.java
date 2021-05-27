@@ -123,15 +123,12 @@ public class Menu extends JFrame{
 			
 				public void actionPerformed(ActionEvent evt) {
 					contenido.removeAll();
-					contenido.add(paneles.botonProduccionUsuario(empleado.getIdEmpleado()));
+					contenido.add(paneles.produccion());
 					contenido.repaint();
 					contenido.revalidate();
 				}
 			
 		});
-		btnProduccion.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnProduccion.setMargin(new Insets(14, 14, 14, 14));
-		menuBar.add(btnProduccion);
 		
 		JButton btnAdministrarCuenta_1 = new JButton("Administrar cuenta");
 		btnAdministrarCuenta_1.setAlignmentX(Component.CENTER_ALIGNMENT);
