@@ -1,8 +1,6 @@
 use empresa;
 
-INSERT INTO empleado
-	(nombre,apellidos,contrasena,categoria)
-VALUES
+INSERT INTO empleado (nombre,apellidos,contrasena,categoria) VALUES
 	 ('Jorge','Pardo Pacheco','qwerty','jefe'),
 	 ('Alvaro','Herrero Ruiz','qwerty','jefe'),
 	 ('Paolo','Romero Antayhua','qwerty','jefe'),
@@ -16,28 +14,44 @@ VALUES
 	 ('Mari Carmen','Sanchez Ruiz','12345','trabajador'),
 	 ('Antonia','Polidura Mingez','12345','trabajador'),
 	 ('Juana','Pascal Sanchez','12345','trabajador'),
-	 ('Luis','Sañudo Perez','123456','encargado');
+	 ('Luis','Sañudo Perez','123456','encargado'),
+	 ('fulanito','de tal','prueba','Trabajador'),
+	 ('otrofulanito','otromas','a','Trabajador'),
+	 ('prueba3','prueba3','q','Trabajador'),
+	 ('Leire','Bonachea','1234','Trabajador'),
+	 ('z','r','z','Jefe'),
+	 ('anchonio','ruiz','q','Jefe');
 	
 
 
 -- datos de piezas
 
-INSERT INTO pieza 
-	(nombre,stock,precio,descripcion)
-VALUES
-	 ('Tornillo',21735,1.10,'Tornillo Autoroscante'),
-	 ('Tornillo',11324,0.90,'Tornillo para madera'),
-	 ('Tuerca',21332,0.50,'Tuerca de 1 cm de diametro interior'),
-	 ('Clavo',9074,0.15,'Clavo de 5 cm de largo'),
-	 ('Arandela',15064,0.05,'Arandela para tuerca de 1cm de diametro'),
-	 ('Alcayata',14987,0.35,'Alcayata en L para pared'),
-	 ('Hembrilla',12368,0.32,'Hembrilla abierta 20x90mm');
+INSERT INTO pieza (nombre,stock,precio,descripcion) VALUES
+	 ('Tornillo',24102,1.10,'Autoroscante'),
+	 ('Tornillo',11324,0.90,'para madera'),
+	 ('Tuerca',23802,0.50,'de 1 cm de diametro interior'),
+	 ('Clavo',9074,0.15,'de 5 cm de largo'),
+	 ('Arandela',15064,0.05,'para tuerca de 1cm de diametro'),
+	 ('Alcayata',15906,0.35,'en L para pared'),
+	 ('Hembrilla',12368,0.32,'abierta 20x90mm'),
+	 ('Pieza de prueba',0,10.30,'Descripcion de prueba'),
+	 ('Clavo',0,0.05,'Punta de hierro cabeza plana zincada 1,10x15mm'),
+	 ('Clavo',0,0.06,'Punta de acero cabeza cónica cobreada 1,5x25mm.'),
+	 ('Clavo',1901,0.06,'Punta Acero Cabeza Conica'),
+	 ('Tirafondo',0,0.08,'PARA MADERA 3 MM.'),
+	 ('Tirafondo',0,0.08,'PARA MADERA 5 MM.'),
+	 ('Tornillo',0,0.08,'BARRAQUEROS DIN 571 Ø10'),
+	 ('Tornillo',800,0.08,'BARRAQUEROS DIN 571 Ø8'),
+	 ('Tornillo',0,0.04,'BARRAQUEROS DIN 571 Ø6'),
+	 ('Arandela',2350,0.03,'lisas DIN 125A'),
+	 ('Arandela',0,0.03,'de carrocero DIN 9021'),
+	 ('Hembrilla',2310,0.04,'abiertas HA'),
+	 ('Hembrilla',0,0.04,'cerradas HC'),
+	 ('Arandela',2907,0.04,'metálica con junta EPDM');
 	 
 	
 	
-INSERT INTO fichaje 
-	(id_empleado,f_entrada,f_salida,total_horas,total_descanso,dentro) 
-VALUES
+INSERT INTO fichaje (id_empleado,f_entrada,f_salida,total_horas,total_descanso,dentro) VALUES
 	 (1,'2021-05-18 10:00:37','2021-05-18 18:49:19','08:48:42','00:25:29',0),
 	 (2,'2021-05-18 10:00:37','2021-05-18 18:49:17','08:48:40','00:25:29',0),
 	 (3,'2021-05-18 10:00:37','2021-05-18 18:49:16','08:48:39','00:25:29',0),
@@ -82,12 +96,12 @@ VALUES
 	 (12,'2021-05-18 10:00:37','2021-05-18 18:48:57','08:48:20','00:25:52',0),
 	 (13,'2021-05-18 10:00:37','2021-05-18 18:45:17','08:44:40','00:25:29',0),
 	 (14,'2021-05-19 10:12:19','2021-05-19 19:39:35','09:27:16','00:39:04',0),
-	 (1,'2021-05-19 11:39:54','2021-05-19 19:41:16','08:01:22','00:15:26',0);
+	 (1,'2021-05-19 11:39:54','2021-05-19 19:41:16','08:01:22','00:15:26',0),
+	 (1,'2021-05-20 09:57:30','2021-05-20 17:59:02','08:01:32','00:13:19',0),
+	 (1,'2021-05-25 22:21:28',NULL,NULL,NULL,1);
 	
 	
-INSERT INTO descanso 
-	(id_descanso,h_entrada,h_salida,total_horas,dentro) 
-VALUES
+INSERT INTO descanso (id_descanso,h_entrada,h_salida,total_horas,dentro) VALUES
 	 (1,'2021-05-18 18:17:48','2021-05-18 18:43:17','00:25:29',0),
 	 (2,'2021-05-18 18:17:56','2021-05-18 18:43:38','00:25:42',0),
 	 (3,'2021-05-18 18:17:59','2021-05-18 18:43:53','00:25:54',0),
@@ -102,24 +116,33 @@ VALUES
 	 (12,'2021-05-18 18:17:56','2021-05-18 18:43:38','00:25:52',0),
 	 (13,'2021-05-18 18:18:17','2021-05-18 18:44:09','00:25:52',0),
 	 (14,'2021-05-19 19:00:04','2021-05-19 19:39:08','00:39:04',0),
-	 (15,'2021-05-19 19:25:17','2021-05-19 19:40:43','00:15:26',0);
+	 (15,'2021-05-19 19:25:17','2021-05-19 19:40:43','00:15:26',0),
+	 (46,'2021-05-20 17:45:07','2021-05-20 17:58:26','00:13:19',0);
 	 
 	
 	
-INSERT INTO tarea 
-	(id_pieza,cantidad_realizada,cantidad_prevista,finalizado) 
-VALUES
-	 (1,2000,21000,0),
-	 (2,1000,1000,1),
+INSERT INTO tarea (id_pieza,cantidad_realizada,cantidad_prevista,finalizado) VALUES
+	 (1,5705,21000,0),
+	 (2,1020,1000,1),
 	 (3,1235,11000,0),
-	 (6,11142,900,1);
+	 (6,900,900,1),
+	 (4,69792,68000,1),
+	 (11,2602,1900,1),
+	 (15,800,800,1),
+	 (17,2350,2300,1),
+	 (19,2310,2300,0),
+	 (21,310,300,1);
 	 
 	
-INSERT INTO realizar 
-	(id_tarea,id_empleado,f_inicio,f_final,cantidad_realizada) 
-VALUES
+INSERT INTO realizar (id_tarea,id_empleado,f_inicio,f_final,cantidad_realizada) VALUES
 	 (1,10,'2021-05-18 18:55:30','2021-05-18 19:40:39',1000),
-	 (2,12,'2021-05-18 18:55:09','2021-05-18 19:39:00',3465),
+	 (2,12,'2021-05-18 18:55:09','2021-05-18 19:39:00',1132),
 	 (3,9,'2021-05-19 18:41:49','2021-05-19 18:43:22',1235),
 	 (4,1,'2021-05-18 18:55:41','2021-05-18 19:31:20',921),
-	 (4,11,'2021-05-19 18:25:15','2021-05-19 18:33:03',919);
+	 (4,11,'2021-05-25 18:25:15','2021-05-25 18:33:03',919),
+	 (5,7,'2021-02-20 18:00:15','2021-03-21 18:00:15',1896),
+	 (6,7,'2021-05-27 17:56:13','2021-05-27 17:56:33',701),
+	 (7,11,'2021-05-27 17:57:02','2021-05-27 17:57:15',800),
+	 (8,15,'2021-05-27 18:00:48','2021-05-27 18:01:00',2350),
+	 (9,2,'2021-05-27 18:19:25','2021-05-27 18:19:41',2310),
+	 (10,6,'2021-05-27 18:01:30','2021-05-27 18:01:40',310);
