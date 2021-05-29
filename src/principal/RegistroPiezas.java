@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -32,6 +34,7 @@ public class RegistroPiezas extends JFrame {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistroPiezas.class.getResource("/principal/gemlogotransdefinitivopeque\u00F1o.png")));
 
+		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
 		conexion=new ConexionBBDD();
 		setTitle("Gesti\u00F3n Empresarial");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -109,7 +112,8 @@ public class RegistroPiezas extends JFrame {
 				dispose();
 	
 			}
-		});		
+		});
+		setLocationRelativeTo(null);
 		setVisible(true);
 
 	}
