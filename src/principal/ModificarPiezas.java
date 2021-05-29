@@ -189,6 +189,13 @@ public class ModificarPiezas extends JFrame {
 							JOptionPane.ERROR_MESSAGE);
 					dispose();
 				}
+				 catch (ArrayIndexOutOfBoundsException e) {
+						System.out.println(e.getMessage());
+						JOptionPane.showMessageDialog(null, "\n"
+								+ "Datos erroneos, acci�n cancelada", "Pieza no modificado",
+								JOptionPane.ERROR_MESSAGE);
+						dispose();
+					}
 			}
 			
 		});

@@ -98,6 +98,11 @@ public class EliminarPiezas extends JFrame {
 				catch (SQLException e) {
 					System.out.println(e.getMessage());
 				}
+				catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "\n"
+							+ "Accion cancelada", "Pieza no eliminada",
+							JOptionPane.ERROR_MESSAGE);
+				}
 				
 				
 			}

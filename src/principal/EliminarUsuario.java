@@ -103,6 +103,13 @@ public class EliminarUsuario extends JFrame {
 					catch (SQLException e) {
 						System.out.println(e.getMessage());
 					}
+					catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(null, "\n"
+								+ "Datos erronesos, accion cancelada", "Usuario no eliminado",
+								JOptionPane.ERROR_MESSAGE);
+						
+					}
+					
 					
 				}
 		});

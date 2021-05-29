@@ -85,6 +85,7 @@ public class RegistroPiezas extends JFrame {
 		btnRegistro.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
+				try {
 				int respuesta = conexion.nuevaPieza(textNombre.getText(),Float.parseFloat(textPrecio.getText().replace(",",".")),textDescripcion.getText());
 				
 				
@@ -99,6 +100,12 @@ public class RegistroPiezas extends JFrame {
 					JOptionPane.showMessageDialog(null, "\n"
 							+ "Datos erroneos, accion cancelada", "Pieza no creada",
 							JOptionPane.ERROR_MESSAGE);
+				}
+			}catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "\n"
+							+ "Datos erronesos, accion cancelada", "Pieza no creada",
+							JOptionPane.ERROR_MESSAGE);
+					
 				}
 			}
 		});

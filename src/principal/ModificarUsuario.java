@@ -179,6 +179,11 @@ public class ModificarUsuario extends JFrame {
 								+ "Datos erronesos, accion cancelada", "Usuario no modificado",
 								JOptionPane.ERROR_MESSAGE);
 						dispose();
+					}catch (NullPointerException e) {
+						JOptionPane.showMessageDialog(null, "\n"
+								+ "Datos erronesos, accion cancelada", "Usuario no modificado",
+								JOptionPane.ERROR_MESSAGE);
+						dispose();
 					}
 					
 				}
