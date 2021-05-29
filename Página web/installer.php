@@ -89,11 +89,11 @@ abstract class DUPX_Bootstrap_Zip_Mode
 class DUPX_Bootstrap
 {
 	//@@ Params get dynamically swapped when package is built
-	const ARCHIVE_FILENAME	 = 'gemempresarial_fd853a8ec75986878040_20210529161629_archive.daf';
-	const ARCHIVE_SIZE		 = '47184175';
+	const ARCHIVE_FILENAME	 = 'gemempresarial_fb798e79d242c3ff3899_20210529172405_archive.daf';
+	const ARCHIVE_SIZE		 = '51699473';
 	const INSTALLER_DIR_NAME = 'dup-installer';
-	const PACKAGE_HASH		 = 'fd853a8-29161629';
-    const SECONDARY_PACKAGE_HASH = 'cdb2b18-29161629';
+	const PACKAGE_HASH		 = 'fb798e7-29172405';
+    const SECONDARY_PACKAGE_HASH = '29845a1-29172405';
 	const VERSION			 = '1.4.1';
 
 	public $hasZipArchive     = false;
